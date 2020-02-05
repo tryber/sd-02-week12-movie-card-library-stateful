@@ -12,17 +12,23 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: props.movies,
-    }
+    };
   }
 
   render() {
     return (
-      
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar searchText={this.state.searchText}/>
+        <SearchBar
+          searchText={this.state.searchText}
+          onSearchTextChange={onSearchTextChange}
+          bookmarkedOnly={this.state.bookmarkedOnly}
+          onBookmarkedChange={onBookmarkedChange}
+          selectedGenre={this.state.selectedGenre}
+          onSelectedGenreChange={onSelectedGenreChange}
+        />
         <MovieList movies={this.props.movies} />
-        <AddMovie />
+        <AddMovie onClick={onClick} />
       </div>
     );
   }
