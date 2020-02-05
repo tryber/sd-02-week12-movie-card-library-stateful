@@ -16,6 +16,9 @@ class AddMovie extends React.Component {
   this.handleInputChange = this.handleInputChange.bind(this);
 }
 
+onClick, uma callback
+
+
 handleInputChange(event) {
   const target = event.target;
   const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -26,6 +29,12 @@ handleInputChange(event) {
   });
 }
 
+handleSubmit(event) {
+  alert('Um nome foi enviado: ' + this.state.value);
+  event.preventDefault();
+}
+
+
 
   render() {
     <form>
@@ -35,7 +44,7 @@ handleInputChange(event) {
         name='title'
         type='text'
         value={this.state.title}
-        onChange={this.handleInputChange}
+        onChange={this.onClick}
       />
     </label>
 
@@ -47,7 +56,7 @@ handleInputChange(event) {
         name='subtitle'
         type='text'
         value={this.state.subtitle}
-        onChange={this.handleInputChange}
+        onChange={this.onClick}
       />
     </label>
 
@@ -59,14 +68,14 @@ handleInputChange(event) {
         name='imagePath'
         type='text'
         value={this.state.imagePath}
-        onChange={this.handleInputChange}
+        onChange={this.onClick}
       />
     </label>
 
 
     <label>
           Sinopse:
-          <textarea value={this.state.storyline} onChange={this.handleInputChange} name='storyline'} />
+          <textarea value={this.state.storyline} onChange={this.onClick} name='storyline'} />
           
         </label>
 
@@ -77,20 +86,20 @@ handleInputChange(event) {
         name='rating'
         type='number'
         value={this.state.rating}
-        onChange={this.handleInputChange}
+        onChange={this.onClick}
       />
     </label>
 
     <label>
       Gênero
-      <select value={this.state.genre} onChange={this.handleInputChange} name='genre'>
+      <select value={this.state.genre} onChange={this.onClick} name='genre'>
         <option value='action'>Ação</option>
         <option value='comedy'>Comédia</option>
         <option value='thriller'>Suspense</option>
       </select>
     </label>
 
-    <button onClick={activateLasers}>
+    <button onClick={this.onClick}>
   Adicionar Filme
 </button>
 

@@ -7,6 +7,12 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies: props.movies,
+    }
   }
 
   render() {
@@ -14,7 +20,7 @@ class MovieLibrary extends Component {
       
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar />
+        <SearchBar searchText={this.state.searchText}/>
         <MovieList movies={this.props.movies} />
         <AddMovie />
       </div>

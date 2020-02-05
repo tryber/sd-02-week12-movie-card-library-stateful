@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isGoing: true,
-      numberOfGuests: 2,
-    };
+//   constructor(props){
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
+//   this.searchText = this.searchText.bind(this);
+//   this.onSearchTextChange = this.onSearchTextChange.bind(this);
+//   this.bookmarkedOnly = this.bookmarkedOnly.bind(this);
+//   this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+//   this.selectedGenre = this.onSelectedGenreChange.bind(this);
+//   this.searchText = this.searchText.bind(this);  
+// }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value,
-    });
-  }
+  searchText = ""
+  onSearchTextChange = () =>
+  bookmarkedOnly = Boolean
+  onBookmarkedChange = () =>
+  selectedGenre = ""
+  onSelectedGenreChange = () =>
 
   render() {
     return (
@@ -27,7 +24,7 @@ class SearchBar extends Component {
         <label>
           Inclui o texto:
           <input
-            name='isGoing'
+            
             type='text'
             value={this.searchText}
             onChange={this.onSearchTextChange}
@@ -36,7 +33,7 @@ class SearchBar extends Component {
         <label>
           Mostrar somente favoritos
           <input
-            name='isGoing'
+           
             type='checkbox'
             checked={this.bookmarkedOnly}
             onChange={this.onBookmarkedChange}
