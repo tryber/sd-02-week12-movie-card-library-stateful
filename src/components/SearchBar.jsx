@@ -7,13 +7,7 @@ class SearchBar extends Component {
       <div>
         <label htmlFor="title">
           Inclui o texto:
-          <input
-            type="text"
-            id="title"
-            value={searchText}
-            name="searchText"
-            onChange={onSearchTextChange}
-          />
+          <input type="text" id="title" value={searchText} name="searchText" onChange={onSearchTextChange} />
         </label>
         <br />
         <label htmlFor="bookmarked">
