@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import MovieLibrary from './components/MovieLibrary';
 import movies from './data';
+import SearchBar from './components/SearchBar';
 
 function App() {
   return (
