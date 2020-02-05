@@ -27,9 +27,9 @@ class SearchBar extends React.Component {
             checked={bookmarkedOnly}
             onChange={onBookmarkedChange}
           />
-          <label htmlFor="gender-filter">
+          <label htmlFor="genre-filter">
             Filtrar por gênero
-            <select value={selectedGenre} onChange={onSelectedGenreChange}>
+            <select value={selectedGenre} onChange={onSelectedGenreChange} id="genre-filter">
               <option value="">Todos</option>
               <option value="action">Ação</option>
               <option value="comedy">Comédia</option>
