@@ -19,6 +19,7 @@ class AddMovie extends React.Component {
     this.handleChangeStoryline = this.handleChangeStoryline.bind(this);
     this.handleChangeRating = this.handleChangeRating.bind(this);
     this.handleChangeGenre = this.handleChangeGenre.bind(this);
+    this.resetAddMovie = this.resetAddMovie.bind(this);
   }
 
   handleChangeTitle(event) {
@@ -49,6 +50,17 @@ class AddMovie extends React.Component {
   handleChangeGenre(event) {
     const { value } = event.target;
     this.setState(() => ({ genre: value }));
+  }
+
+  resetAddMovie() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
@@ -113,8 +125,13 @@ class AddMovie extends React.Component {
             <option value="thriller">Suspense</option>
           </select>
         </label>
-        <button type="button" onClick={onClick(this.state)}>Adicionar filme</button>
-
+        <button
+          type="button"
+          value={onClick(this.state)}
+          onClick={this.resetAddMovie}
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
