@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class SearchBar extends Component {
 
-  inputFields = (onSearchTextChange, onBookmarkedChange) => {
+  inputFields(onSearchTextChange, onBookmarkedChange) {
     const { searchText, bookmarkedOnly } = this.props;
     return (
       <div>
@@ -20,8 +20,8 @@ class SearchBar extends Component {
     )
   }
 
-  selectFields = (onSelectedGenreChange) => {
-    const{ selectedGenre } = this.props;
+  selectFields(onSelectedGenreChange) {
+    const { selectedGenre } = this.props;
     return (
       <label>
         Filtrar por gênero:
