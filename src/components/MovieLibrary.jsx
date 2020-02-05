@@ -7,11 +7,12 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: this.props.movies,
+      movies: movies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
@@ -19,30 +20,51 @@ class MovieLibrary extends Component {
   }
 
   onSearchTextChange(event) {
-    console.log(event.target.value);
+    const { value } = event.target;
+    const { movies } = this.state;
+    const newMovies = movies.filter((el) => el.title.includes(value)
+      || el.subtitle.includes(value)
+      || el.storyline.includes(value));
+    this.setState({
+      searchText: value,
+      movies: (value === '') ? this.props.movies : newMovies,
+    });
   }
 
   onBookmarkedChange(event) {
-    console.log(event.target.checked);
+    const { checked } = event.target;
+    const { movies } = this.state;
+    this.setState({
+      bookmarkedOnly: checked,
+      movies: (checked === false)
+        ? this.props.movies : movies.filter((el) => el.bookmarked === checked),
+    });
   }
 
   onSelectedGenreChange(event) {
-    console.log(event.target.value);
+    const { value } = event.target;
+    const { movies } = this.props;
+    this.setState({
+      selectedGenre: value,
+      movies: (value === '') ? movies : movies.filter((el) => el.genre === value),
+    });
   }
 
   render() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    console.log(movies);
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          text={this.state.searchText}
-          changeText={this.onSearchTextChange}
-          bookmarkedOnly={this.state.bookmarkedOnly}
-          bookmarkedChange={this.onBookmarkedChange}
-          genre={this.state.selectedGenre}
-          genreSelected={this.onSelectedGenreChange}
+          searchText={searchText}
+          onSearchTextChange={(e) => this.onSearchTextChange(e)}
+          bookmarkedOnly={bookmarkedOnly}
+          onBookmarkedChange={(e) => this.onBookmarkedChange(e)}
+          selectedGenre={selectedGenre}
+          onSelectedGenreChange={(e) => this.onSelectedGenreChange(e)}
         />
-        <MovieList movies={this.props.movies} />
+        <MovieList movies={movies} />
         <AddMovie addMovie={this.addNewMovie} />
       </div>
     );
