@@ -4,24 +4,27 @@ class SearchBar extends Component {
   inputFields(onSearchTextChange, onBookmarkedChange) {
     const { searchText, bookmarkedOnly } = this.props;
     return (
-      <div>
-        <label htmlFor="title">
-          Inclui o texto:
-          <input type="text" id="title" value={searchText} name="searchText" onChange={onSearchTextChange} />
-        </label>
-        <br />
-        <label htmlFor="bookmarked">
-          Mostrar somente favoritos:
+      <label htmlFor="title">
+        Inclui o texto:
           <input
-            type="checkbox"
-            id="bookmarked"
-            checked={bookmarkedOnly}
-            name="bookmarkedOnly"
-            onChange={onBookmarkedChange}
-          />
-        </label>
-        <br />
-      </div>
+          type="text"
+          id="title"
+          value={searchText}
+          name="searchText"
+          onChange={onSearchTextChange} />
+      </label>
+      <br />
+      <label htmlFor="bookmarked">
+        Mostrar somente favoritos:
+          <input
+          type="checkbox"
+          id="bookmarked"
+          checked={bookmarkedOnly}
+          name="bookmarkedOnly"
+          onChange={onBookmarkedChange}
+        />
+      </label>
+      <br />
     );
   }
 
