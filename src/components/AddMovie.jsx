@@ -13,30 +13,20 @@ class AddMovie extends React.Component {
     };
   }
 
-  this.handleInputChange = this.handleInputChange.bind(this);
-}
 
-onClick, uma callback
-
-
-handleInputChange(event) {
+  handleInputChange = (event) => {
   const target = event.target;
-  const value = target.type === 'checkbox' ? target.checked : target.value;
+  const value = target.value;
   const name = target.name;
 
-  this.setState({
+  this.setState(() => ({    
     [name]: value,
-  });
+  }))
 }
-
-handleSubmit(event) {
-  alert('Um nome foi enviado: ' + this.state.value);
-  event.preventDefault();
-}
-
-
 
   render() {
+    const {onClick} = this.props
+    return (
     <form>
     <label>
       Título
@@ -44,68 +34,57 @@ handleSubmit(event) {
         name='title'
         type='text'
         value={this.state.title}
-        onChange={this.onClick}
+        onChange={this.handleInputChange()}
       />
     </label>
-
-
-
     <label>
       Subtítulo
       <input
         name='subtitle'
         type='text'
         value={this.state.subtitle}
-        onChange={this.onClick}
+        onChange={this.handleInputChange()}
       />
     </label>
-
-
-
     <label>
       Imagem
       <input
         name='imagePath'
         type='text'
         value={this.state.imagePath}
-        onChange={this.onClick}
+        onChange={this.handleInputChange()}
       />
     </label>
-
-
     <label>
-          Sinopse:
-          <textarea value={this.state.storyline} onChange={this.onClick} name='storyline'} />
-          
-        </label>
-
-
+    Sinopse:
+          <textarea value={this.state.storyline} onChange={this.handleInputChange()} name='storyline'/>
+    </label>
     <label>
       Avaliação
       <input
         name='rating'
         type='number'
         value={this.state.rating}
-        onChange={this.onClick}
+        onChange={this.handleInputChange()}
       />
     </label>
-
-    <label>
+    
+        <label>
       Gênero
-      <select value={this.state.genre} onChange={this.onClick} name='genre'>
+      <select value={this.state.genre} onChange={this.handleInputChange} name='genre'>
         <option value='action'>Ação</option>
         <option value='comedy'>Comédia</option>
         <option value='thriller'>Suspense</option>
       </select>
     </label>
-
-    <button onClick={this.onClick}>
+    <button onClick={onClick}>
   Adicionar Filme
 </button>
 
     
   </form>
+    );
+  
   }
 }
-
 export default AddMovie;
