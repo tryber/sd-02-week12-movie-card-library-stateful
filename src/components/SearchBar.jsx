@@ -51,10 +51,9 @@ class SearchBar extends Component {
     return (
       <form>
         <fieldset>
-          {this.includeText()}
-          <br/>
+          {this.includeText()}<br />
           {this.showFavorites()}
-          <br/>
+          <br />
           {this.genreFilter()}
         </fieldset>
       </form>
