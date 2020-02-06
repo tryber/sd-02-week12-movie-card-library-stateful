@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, } from 'react';
 
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
@@ -40,14 +40,14 @@ class MovieLibrary extends Component {
     const { searchText, bookmarkedOnly, selectedGenre } = state;
     let arr = state.movies;
 
-    arr = [...this.props.movies.filter(movie =>
+    arr = [...this.state.movies.filter(movie =>
         movie.title.toLowerCase().includes(searchText.toLowerCase()) ||
         movie.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
         movie.storyline.toLowerCase().includes(searchText.toLowerCase())
-        )
+      )
     ];
 
-    arr = [... (bookmarkedOnly) ?
+    arr = [...(bookmarkedOnly) ?
         arr.filter(movie => movie.bookmarked) :
         arr
     ];
@@ -63,7 +63,7 @@ class MovieLibrary extends Component {
   onClick = (newState) => {
     const array = [...this.state.movies, newState];
     this.setState({
-      // ...this.state,
+      ...this.state,
       movies: [...array ]
     });
   }
@@ -72,8 +72,6 @@ class MovieLibrary extends Component {
     return (
       <>
         <h2>My awesome Movie Library</h2>
-        <MovieList movies={this.filter(this.state)} />
-        <AddMovie onClick={this.onClick} />
         <SearchBar
           searchText={this.state.searchText}
           onSearchTextChange={this.onSearchTextChange}
@@ -82,6 +80,8 @@ class MovieLibrary extends Component {
           selectedGenre={this.state.selectedGenre}
           onSelectedGenreChange={this.onSelectedGenreChange}
         />
+        <MovieList movies={this.filter(this.state)} />
+        <AddMovie onClick={this.onClick} />
       </>
     )
   }
