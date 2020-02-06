@@ -11,9 +11,10 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: "action",
     };
+    this.trocarTitle = this.trocarTitle.bind(this)
   }
-  trocarTitle = (e) => {
-    this.setState({ title: e.target.value })
+  trocarTitle(event) {
+    this.setState({ title: event.target.value })
   }
   trocarSubtitle = (event) => {
     this.setState({ subtitle: event.target.value })

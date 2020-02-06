@@ -15,8 +15,8 @@ class MovieLibrary extends Component {
       movies: this.props.movies
     };
   }
-  changeHandlerText = e => {
-    const { value } = e.target
+  changeHandlerText = event => {
+    const { value } = event.target
     this.setState({ searchText: value })
   }
   changeBookMarker = () => {
