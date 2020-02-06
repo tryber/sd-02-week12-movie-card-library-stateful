@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-  inputText () {
+  inputText() {
     return (
-      <label>
+      <label htmlFor="texto">
         Inclui o texto:
         <input
+          id="texto"
           type="text"
           onChange={this.props.onSearchTextChange}
           value={this.props.searchText}
@@ -14,10 +15,11 @@ class SearchBar extends Component {
     );
   }
 
-  inputCheckbox () {
+  inputCheckbox() {
     return (
-      <label>
+      <label htmlFor="check">
         <input
+          id="check"
           type="checkbox"
           onChange={this.props.onBookmarkedChange}
           checked={this.props.bookmarkedOnly}
@@ -27,11 +29,12 @@ class SearchBar extends Component {
     );
   }
 
-  selectBox () {
+  selectBox() {
     return (
-      <label>
+      <label htmlFor="selectGen">
         Filtrar por gênero:
         <select
+          id="selectGen"
           onChange={this.props.onSelectedGenreChange}
           value={this.props.selectedGenre}
         >
@@ -44,11 +47,11 @@ class SearchBar extends Component {
     );
   }
 
-  render () {
+  render() {
     return (
       <form>
         <fieldset>
-          {this.inputText()} 
+          {this.inputText()}
           <br />
           {this.inputCheckbox()}
           <br />

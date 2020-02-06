@@ -10,12 +10,12 @@ class AddMovie extends React.Component {
       storyline: '',
       rating: 0,
       genre: 'action',
-    }
+    };
     this.changeInput = this.changeInput.bind(this);
     this.movieAddClean = this.movieAddClean.bind(this);
   }
 
-  movieAddClean (onClick) {
+  movieAddClean(onClick) {
     onClick(this.state);
     this.setState(() => ({
       subtitle: '',
@@ -27,19 +27,20 @@ class AddMovie extends React.Component {
     }));
   }
 
-  changeInput (e, nome) {
+  changeInput(e, nome) {
     const { value } = e.target;
-    this.setState(() => ({ [nome]: value, }));
+    this.setState(() => ({ [nome]: value }));
     if (nome === 'rating') {
-      this.setState(() => ({ [nome]: parseFloat(value), }));
+      this.setState(() => ({ [nome]: parseFloat(value) }));
     }
   }
 
-  inputText (label, type, item, func) {
+  inputText(label, type, item, func) {
     return (
-      <label>
+      <label htmlFor={item}>
         {label}
         <input
+          id={item}
           type={type}
           name={item}
           value={this.state[item]}
@@ -49,11 +50,12 @@ class AddMovie extends React.Component {
     );
   }
 
-  inputTextArea (label, item, func) {
+  inputTextArea(label, item, func) {
     return (
-      <label>
+      <label htmlFor={item}>
         {label}
         <textarea
+          id={item}
           name={item}
           value={this.state[item]}
           onChange={(e) => func(e, item)}
@@ -62,11 +64,12 @@ class AddMovie extends React.Component {
     );
   }
 
-  selectBox (item) {
+  selectBox(item) {
     return (
-      <label>
+      <label htmlFor={item}>
         Gênero:
         <select
+          id={item}
           onChange={(e) => this.changeInput(e, item)}
           value={this.state.genre}
         >
@@ -78,7 +81,7 @@ class AddMovie extends React.Component {
     );
   }
 
-  render () {
+  render() {
     return (
       <form>
         <fieldset>
@@ -88,7 +91,9 @@ class AddMovie extends React.Component {
           {this.inputTextArea('Sinopse', 'storyline', this.changeInput)}
           {this.inputText('Avaliação', 'number', 'rating', this.changeInput)}
           {this.selectBox('genre')}
-          <button type="button" onClick={() => this.movieAddClean(this.props.onClick)}>Adicionar filme</button>
+          <button type="button" onClick={() => this.movieAddClean(this.props.onClick)}>
+            Adicionar filme
+          </button>
         </fieldset>
       </form>
     );
