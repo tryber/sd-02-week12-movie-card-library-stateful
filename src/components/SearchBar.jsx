@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 
+function labelText(searchText, onSearchTextChange) {
+  return (
+    <label htmlFor="text">
+      Inclui o texto:
+      <input type="text" value={searchText} onChange={onSearchTextChange} id="text" />
+    </label>
+  );
+}
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.labelText = this.labelText.bind(this);
+//    this.labelText = this.labelText.bind(this);
     this.labelCheckbox = this.labelCheckbox.bind(this);
     this.labelSelect = this.labelSelect.bind(this);
   }
 
-  labelText(searchText, onSearchTextChange) {
-    return (
-      <label htmlFor="text">
-        Inclui o texto:
-        <input type="text" value={searchText} onChange={onSearchTextChange} id="text" />
-      </label>
-    );
-  }
+  // labelText(searchText, onSearchTextChange) {
+  //   return (
+  //     <label htmlFor="text">
+  //       Inclui o texto:
+  //       <input type="text" value={searchText} onChange={onSearchTextChange} id="text" />
+  //     </label>
+  //   );
+  // }
 
   labelCheckbox(bookmarkedOnly, onBookmarkedChange) {
     return (
@@ -52,7 +61,7 @@ class SearchBar extends Component {
 
     return (
       <form>
-        {this.labelText(searchText, onSearchTextChange)}
+        {labelText(searchText, onSearchTextChange)}
         {this.labelCheckbox(bookmarkedOnly, onBookmarkedChange)}
         {this.labelSelect(selectedGenre, onSelectedGenreChange)}
       </form>
