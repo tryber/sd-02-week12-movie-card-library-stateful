@@ -16,42 +16,45 @@ class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.filterAll = this.filterAll.bind(this);
   }
 
   onSearchTextChange(event) {
     const { value } = event.target;
-    const { movies } = this.state;
-    const newMovies = movies.filter((el) => el.title.includes(value)
-      || el.subtitle.includes(value)
-      || el.storyline.includes(value));
-    this.setState({
-      searchText: value,
-      movies: (value === '') ? this.props.movies : newMovies,
-    });
+    this.setState({ searchText: value });
   }
 
   onBookmarkedChange(event) {
     const { checked } = event.target;
-    const { movies } = this.state;
-    this.setState({
-      bookmarkedOnly: checked,
-      movies: (checked === false)
-        ? this.props.movies : movies.filter((el) => el.bookmarked === checked),
-    });
+    this.setState({ bookmarkedOnly: checked });
   }
 
   onSelectedGenreChange(event) {
     const { value } = event.target;
-    const { movies } = this.props;
-    this.setState({
-      selectedGenre: value,
-      movies: (value === '') ? movies : movies.filter((el) => el.genre === value),
-    });
+    this.setState({ selectedGenre: value });
+  }
+
+  filterAll() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    let { movies } = this.state;
+    const newMovies = movies.filter((el) => el.title.includes(searchText)
+      || el.subtitle.includes(searchText)
+      || el.storyline.includes(searchText));
+    if (searchText !== '') {
+      movies = newMovies;
+    }
+    if (bookmarkedOnly) {
+      movies = movies.filter((movie) => movie.bookmarked);
+    }
+    if (selectedGenre.length > 0) {
+      movies = movies
+        .filter((movie) => movie.genre === selectedGenre);
+    }
+    return movies;
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    console.log(movies);
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -63,7 +66,7 @@ class MovieLibrary extends Component {
           selectedGenre={selectedGenre}
           onSelectedGenreChange={(e) => this.onSelectedGenreChange(e)}
         />
-        <MovieList movies={movies} />
+        <MovieList movies={this.filterAll(this.state)} />
         <AddMovie addMovie={this.addNewMovie} />
       </div>
     );

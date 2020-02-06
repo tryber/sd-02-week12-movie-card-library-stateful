@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-  inputFields(onSearchTextChange, onBookmarkedChange) {
-    const { searchText, bookmarkedOnly } = this.props;
+  constructor(props) {
+    super(props);
+    this.inputText = this.inputText.bind(this);
+    this.inputBookMarked = this.inputBookMarked.bind(this);
+    this.selectFields = this.selectFields.bind(this);
+  }
+
+  inputText(onSearchTextChange) {
+    const { searchText } = this.props;
     return (
       <label htmlFor="title">
         Inclui o texto:
-          <input
+        <input
           type="text"
           id="title"
           value={searchText}
           name="searchText"
-          onChange={onSearchTextChange} />
+          onChange={onSearchTextChange}
+        />
       </label>
-      <br />
+    );
+  }
+
+  inputBookMarked(onBookmarkedChange) {
+    const { bookmarkedOnly } = this.props;
+    return (
       <label htmlFor="bookmarked">
         Mostrar somente favoritos:
-          <input
+        <input
           type="checkbox"
           id="bookmarked"
           checked={bookmarkedOnly}
@@ -24,7 +37,6 @@ class SearchBar extends Component {
           onChange={onBookmarkedChange}
         />
       </label>
-      <br />
     );
   }
 
@@ -53,7 +65,10 @@ class SearchBar extends Component {
     return (
       <div>
         <form>
-          {this.inputFields(onSearchTextChange, onBookmarkedChange)}
+          {this.inputText(onSearchTextChange)}
+          <br />
+          {this.inputBookMarked(onBookmarkedChange)}
+          <br />
           {this.selectFields(onSelectedGenreChange)}
         </form>
       </div>
