@@ -20,6 +20,10 @@ procuraTexto = () => {
   })
 }
 
+adicionaFilme(callback){
+  console.log(callback)
+}
+
   render() {
     return (
       <div>
@@ -30,7 +34,7 @@ procuraTexto = () => {
           selectedGenre={this.state.selectedGenre}
         />
         <MovieList movies={this.props.movies} />
-        <AddMovie />
+        <AddMovie onClick={this.adicionaFilme}/>
       </div>
     );
   }
