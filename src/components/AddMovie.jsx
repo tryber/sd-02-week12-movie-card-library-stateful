@@ -70,8 +70,22 @@ class AddMovie extends React.Component {
     );
   }
 
+  limparEstado(funcaoClicar) {
+    const filme = this.state;
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+    funcaoClicar(filme);
+  }
+
   render() {
     const estado = this.state;
+    const { onClick } = this.props;
     console.log(estado);
     return (
       <form>
@@ -90,7 +104,7 @@ class AddMovie extends React.Component {
         {this.fazerInput('av', 'rating', 'number', 'rating', 'trocarRating')}
         <label htmlFor="gen">Gênero</label>
         {this.fazerSelect()}
-        <button onClick={this.props.callbackAddFilme}>Adicionar filme</button>
+        <button type="button" onClick={() => this.limparEstado(onClick)}>Adicionar filme</button>
       </form>
     );
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-
   render() {
     const propriedades = this.props;
     return (
