@@ -18,66 +18,62 @@ class AddMovie extends React.Component {
     this.trocarRating = this.trocarRating.bind(this);
     this.trocarGenre = this.trocarGenre.bind(this);
   }
+
   trocarTitle(event) {
     this.setState({ title: event.target.value });
   }
+
   trocarSubtitle(event) {
     this.setState({ subtitle: event.target.value });
   }
+
   trocarImagePath(event) {
     this.setState({ imagePath: event.target.value });
   }
+
   trocarStoryline(event) {
     this.setState({ storyline: event.target.value });
   }
+
   trocarRating(event) {
     this.setState({ rating: parseFloat(event.target.value) });
   }
+
   trocarGenre(event) {
     this.setState({ genre: event.target.value });
   }
 
+  fazerInput(id, name, type, valor, aotrocar) {
+    return (
+      <input
+        id={id}
+        name={name}
+        type={type}
+        value={this.state[valor]}
+        onChange={this[aotrocar]}
+      />
+    );
+  }
 
-  // addFilme = (event) => {
-  //   event.preventDefault();
-  //   this.setState({
-  //     subtitle: "",
-  //     title: "",
-  //     imagePath: "",
-  //     storyline: "",
-  //     rating: 0,
-  //     genre: "action",
-  //   })
-  // }
   render() {
     const estado = this.state;
+    console.log(estado);
     return (
       <form>
-        <label htmlFor="name">Título</label><br />
-        <input id="name" name="title" type="text" value={estado.title}
-          onChange={this.trocarTitle}
-        /><br />
-        <label htmlFor="sub">Subtítulo</label><br />
-        <input
-          id="sub" name="subtitle" type="text" value={estado.subtitle}
-          onChange={this.trocarSubtitle}
-        /><br />
-        <label htmlFor="img">Imagem</label><br />
-        <input id="img"
-          name="imagePath" type="text" value={estado.imagePath}
-          onChange={this.trocarImagePath}
-        /><br />
-        <label htmlFor="sin">Sinopse</label><br />
+        <label htmlFor="name">Título</label>
+        {this.fazerInput('name', 'title', 'text', 'title', 'trocarTitle')}
+        <label htmlFor="sub">Subtítulo</label>
+        {this.fazerInput('sub', 'subtitle', 'text', 'subtitle', 'trocarSubtitle')}
+        <label htmlFor="img">Imagem</label>
+        {this.fazerInput('img', 'imagePath', 'text', 'imagePath', 'trocarImagePath')}
+        <label htmlFor="sin">Sinopse</label>
         <textarea
           id="sin" name="storyline" value={estado.storyline}
           onChange={this.trocarStoryline}
-        /><br />
-        <label htmlFor="av">Avaliação</label><br />
-        <input
-          id="av" name="rating" type="number" value={estado.rating}
-          onChange={this.trocarRating}
-        /><br />
-        <label htmlFor="gen">Gênero</label><br />
+        />
+        <label htmlFor="av">Avaliação</label>
+        {this.fazerInput('av', 'rating', 'number', 'rating', 'trocarRating')}
+        <label htmlFor="gen">Gênero</label>
         <select
           id="gen" name="genre"
           onChange={this.trocarGenre} value={estado.genre}
@@ -85,7 +81,7 @@ class AddMovie extends React.Component {
           <option value="action">Ação</option>
           <option value="comedy">Comédia</option>
           <option value="thriller">Suspense</option>
-        </select><br />
+        </select>
         <button onClick={this.props.callbackAddFilme}>Adicionar filme</button>
       </form>
     );
