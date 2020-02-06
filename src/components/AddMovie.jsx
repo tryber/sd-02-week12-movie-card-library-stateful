@@ -12,23 +12,28 @@ class AddMovie extends React.Component {
       genre: "action",
     };
     this.trocarTitle = this.trocarTitle.bind(this)
+    this.trocarSubtitle = this.trocarSubtitle.bind(this)
+    this.trocarImagePath = this.trocarImagePath.bind(this)
+    this.trocarStoryline = this.trocarStoryline.bind(this)
+    this.trocarRating = this.trocarRating.bind(this)
+    this.trocarGenre = this.trocarGenre.bind(this)
   }
   trocarTitle(event) {
     this.setState({ title: event.target.value })
   }
-  trocarSubtitle = (event) => {
+  trocarSubtitle(event) {
     this.setState({ subtitle: event.target.value })
   }
-  trocarImagePath = (event) => {
+  trocarImagePath(event) {
     this.setState({ imagePath: event.target.value })
   }
-  trocarStoryline = (event) => {
+  trocarStoryline(event) {
     this.setState({ storyline: event.target.value })
   }
-  trocarRating = (event) => {
+  trocarRating(event) {
     this.setState({ rating: parseFloat(event.target.value) })
   }
-  trocarGenre = (event) => {
+  trocarGenre(event) {
     this.setState({ genre: event.target.value })
   }
 

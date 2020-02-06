@@ -14,31 +14,38 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: this.props.movies
     };
+    this.changeHandlerText = this.changeHandlerText.bind(this)
+    this.changeBookMarker = this.changeBookMarker.bind(this)
+    this.changeGenre = this.changeGenre.bind(this)
+    this.filtrarPorText = this.filtrarPorText.bind(this)
+    this.filtrarPorGenero = this.filtrarPorGenero.bind(this)
+    this.filtrarPorBookmark = this.filtrarPorBookmark.bind(this)
+    this.addicionarFilme = this.addicionarFilme.bind(this)
   }
-  changeHandlerText = event => {
+  changeHandlerText(event) {
     const { value } = event.target
     this.setState({ searchText: value })
   }
-  changeBookMarker = () => {
+  changeBookMarker() {
     const booleano = this.state.bookmarkedOnly
     const retorno = booleano ? false : true
     this.setState({ bookmarkedOnly: retorno })
   }
-  changeGenre = (event) => {
+  changeGenre(event) {
     this.setState({ selectedGenre: event.target.value })
   }
-  filtrarPorText = (filmes, texto) => {
+  filtrarPorText(filmes, texto) {
     return filmes.filter(filme => (filme.title.includes(texto) || filme.subtitle.includes(texto) || filme.storyline.includes(texto)))
   }
-  filtrarPorGenero = (filmes, genero) => {
+  filtrarPorGenero(filmes, genero) {
     if (!genero) return filmes
     return filmes.filter(filme => filme.genre === genero)
   }
-  filtrarPorBookmark = (filmes, bookmark) => {
+  filtrarPorBookmark(filmes, bookmark) {
     if (bookmark) return filmes.filter(filme => filme.bookmarked)
     return filmes
   }
-  addicionarFilme = (event) => {
+  addicionarFilme(event) {
     event.preventDefault();
     alert('abc');
   }
