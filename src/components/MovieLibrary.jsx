@@ -10,6 +10,7 @@ class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.filter = this.filter.bind(this);
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -19,35 +20,38 @@ class MovieLibrary extends Component {
   }
 
   onSearchTextChange(e) {
-    const arrMovies = this.props.movies;
-    const { searchText } = this.state;
     const { value } = e.target;
-    this.setState(() => ({
-      searchText: value,
-      movies: arrMovies.filter((element) => (element.title.includes(searchText)
-        || element.subtitle.includes(searchText)
-        || element.storyline.includes(searchText))),
-    }));
+    this.setState(() => ({ searchText: value }));
   }
 
   onBookmarkedChange(e) {
     const { checked } = e.target;
     this.setState(() => ({ bookmarkedOnly: checked }));
-    this.setState((state) => ({
-      movies: (state.bookmarkedOnly) ? state.movies.filter(
-        (element) => element.bookmarked === state.bookmarkedOnly)
-        : this.props.movies,
-    }));
   }
 
   onSelectedGenreChange(e) {
     const { value } = e.target;
     this.setState(() => ({ selectedGenre: value }));
-    this.setState((state) => ({
-      movies: state.movies.filter(
-        (element) => element.genre === state.selectedGenre,
-      ),
-    }));
+  }
+
+  filter(arr) {
+    let aux = arr;
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
+    if (searchText !== '') {
+      aux = this.state.movies.filter((element) => (element.title.includes(searchText)
+        || element.subtitle.includes(searchText)
+        || element.storyline.includes(searchText)));
+    }
+    if (selectedGenre !== '') {
+      aux = aux.filter(
+        (element) => element.genre === selectedGenre
+      );
+    }
+    if (bookmarkedOnly) {
+      aux = aux.filter(
+        (element) => element.bookmarked === bookmarkedOnly)
+    }
+    return aux;
   }
 
   render() {
@@ -64,9 +68,9 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={(e) => this.onSelectedGenreChange(e)}
         />
         <MovieList
-          movies={movies}
+          movies={this.filter(movies)}
         />
-        <AddMovie />
+        <AddMovie onClick={'a'} />
       </div>
     );
   }
