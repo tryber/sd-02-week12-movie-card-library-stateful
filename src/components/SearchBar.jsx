@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.labelText = this.labelText.bind(this);
+    this.labelCheckbox = this.labelCheckbox.bind(this);
+    this.labelSelect = this.labelSelect.bind(this);
+  }
+
   labelText(searchText, onSearchTextChange) {
     return (
       <label htmlFor="text">
