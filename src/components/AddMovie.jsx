@@ -4,14 +4,7 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = this.initialState;
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
@@ -22,45 +15,49 @@ class AddMovie extends React.Component {
     this.resetAddMovie = this.resetAddMovie.bind(this);
   }
 
-  handleChangeTitle(event) {
-    const { value } = event.target;
-    this.setState(() => ({ title: value }));
-  }
-
-  handleChangeSubtitle(event) {
-    const { value } = event.target;
-    this.setState(() => ({ subtitle: value }));
-  }
-
-  handleChangeImagePath(event) {
-    const { value } = event.target;
-    this.setState(() => ({ imagePath: value }));
-  }
-
-  handleChangeStoryline(event) {
-    const { value } = event.target;
-    this.setState(() => ({ storyline: value }));
-  }
-
-  handleChangeRating(event) {
-    const { value } = event.target;
-    this.setState(() => ({ rating: Number(value) }));
-  }
-
-  handleChangeGenre(event) {
-    const { value } = event.target;
-    this.setState(() => ({ genre: value }));
-  }
-
-  resetAddMovie() {
-    this.setState({
+  get initialState() {
+    return {
       subtitle: '',
       title: '',
       imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
-    });
+    };
+  }
+
+  handleChangeTitle(event) {
+    const { value } = event.target;
+    this.setState({ title: value });
+  }
+
+  handleChangeSubtitle(event) {
+    const { value } = event.target;
+    this.setState({ subtitle: value });
+  }
+
+  handleChangeImagePath(event) {
+    const { value } = event.target;
+    this.setState({ imagePath: value });
+  }
+
+  handleChangeStoryline(event) {
+    const { value } = event.target;
+    this.setState({ storyline: value });
+  }
+
+  handleChangeRating(event) {
+    const { value } = event.target;
+    this.setState({ rating: Number(value) });
+  }
+
+  handleChangeGenre(event) {
+    const { value } = event.target;
+    this.setState({ genre: value });
+  }
+
+  resetAddMovie() {
+    this.setState(this.initialState);
   }
 
   titleSubtitleInputs() {
