@@ -12,7 +12,7 @@ class SearchBar extends Component {
     const { searchText, onSearchTextChange, bookmarkedOnly,
       onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
-      <>
+      <div>
         <form>
           <div>
             <label>Inclui o texto</label>
@@ -33,9 +33,8 @@ class SearchBar extends Component {
             </select>
           </div>
         </form>
-      </>
-    )
-  }
+      </div>
+    )}
 }
 
 export default SearchBar;
