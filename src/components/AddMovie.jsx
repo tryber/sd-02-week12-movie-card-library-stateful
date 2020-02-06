@@ -18,7 +18,6 @@ class AddMovie extends React.Component {
   }
   addFilme = (event) => {
     event.preventDefault();
-    console.log(this.props)
     this.setState({
       subtitle: '',
       title: '',
@@ -30,7 +29,6 @@ class AddMovie extends React.Component {
   }
   render() {
     const propriedades = this.state;
-    console.log(propriedades)
     return (
       <form>
         <label>Título</label><br></br>

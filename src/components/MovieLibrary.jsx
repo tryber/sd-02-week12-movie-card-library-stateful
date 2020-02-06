@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar'
+import MovieList from './MovieList'
+import AddMovie from './AddMovie'
+
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -9,6 +12,7 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies: this.props.movies
     };
   }
   changeHandler = event => {
@@ -23,9 +27,23 @@ class MovieLibrary extends Component {
   changeGenre = (event) => {
     this.setState({ selectedGenre: event.target.value })
   }
+  filtrarPorText = (filmes, texto) => {
+    return filmes.filter(filme => (filme.title.includes(texto) || filme.subtitle.includes(texto) || filme.storyline.includes(texto)))
+  }
+  filtrarPorGenero = (filmes, genero) => {
+    if (!genero) return filmes
+    return filmes.filter(filme => filme.genre === genero)
+  }
+  filtrarPorBookmark = (filmes, bookmark) => {
+    if (bookmark) return filmes.filter(filme => filme.bookmarked)
+    return filmes
+  }
 
   render() {
-    console.log(this.state)
+    const filmes = this.state.movies
+    const conteudoFiltradoPorTexto = this.filtrarPorText(filmes, this.state.searchText)
+    const conteudoFiltradoPorGenero = this.filtrarPorGenero(conteudoFiltradoPorTexto, this.state.selectedGenre)
+    const conteudoFiltradoPorBookmark = this.filtrarPorBookmark(conteudoFiltradoPorGenero, this.state.bookmarkedOnly)
     return (
       <div>
         <h2>My awesome Movie Library</h2>
@@ -37,6 +55,8 @@ class MovieLibrary extends Component {
           selectedGenre={this.state.selectedGenre}
           onSelectedGenreChange={this.changeGenre}
         />
+        <MovieList movies={conteudoFiltradoPorBookmark} />
+        <AddMovie />
       </div>)
   }
 }
