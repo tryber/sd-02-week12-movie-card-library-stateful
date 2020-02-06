@@ -24,10 +24,9 @@ class MovieLibrary extends Component {
     const { value } = e.target;
     this.setState(() => ({
       searchText: value,
-      movies: arrMovies.filter((element) => {
-        return (element.title.includes(searchText) || element.subtitle.includes(searchText) ||
-          element.storyline.includes(searchText));
-      })
+      movies: arrMovies.filter((element) => (element.title.includes(searchText)
+        || element.subtitle.includes(searchText)
+        || element.storyline.includes(searchText))),
     }));
   }
 
@@ -38,7 +37,8 @@ class MovieLibrary extends Component {
       movies: (state.bookmarkedOnly) ? state.movies.filter(
         (element) => element.bookmarked === state.bookmarkedOnly)
         : this.props.movies,
-    }))}
+    }));
+  }
 
   onSelectedGenreChange(e) {
     const { value } = e.target;

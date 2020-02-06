@@ -6,7 +6,13 @@ class SearchBar extends Component {
     return (
       <label htmlFor="InputText">
         <p>Inclui o texto</p>
-        <input type="text" id="InputText" name="InputText" value={a} onChange={onSearchTextChange} />
+        <input
+          type="text"
+          id="InputText"
+          name="InputText"
+          value={a}
+          onChange={onSearchTextChange}
+        />
       </label>
     );
   }
