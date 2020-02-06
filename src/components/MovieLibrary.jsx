@@ -48,14 +48,13 @@ class MovieLibrary extends Component {
     });
   }
 
-  onChildChanged = (newState) => {
+  onClick = (newState) => {
     this.data[this.data.length] = newState;
     this.setState({
       ...this.state,
       movies: this.data
     });
   }
-
 
   test = (e) => {
     this.setState({
@@ -68,7 +67,7 @@ class MovieLibrary extends Component {
       <>
         <h2>My awesome Movie Library</h2>
         <MovieList movies={this.state.movies} />
-        <AddMovie callbackParent={this.onChildChanged} />
+        <AddMovie onClick={this.onClick} />
         <SearchBar
           searchText={this.state.searchText}
           onSearchTextChange={this.onSearchTextChange}

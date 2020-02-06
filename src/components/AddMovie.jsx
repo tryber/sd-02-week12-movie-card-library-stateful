@@ -14,7 +14,7 @@ const initialState = {
   imagePath: '',
   storyline: '',
   rating: 0,
-  genre: 'todos'
+  genre: 'action'
 }
 
 class AddMovie extends React.Component {
@@ -35,19 +35,21 @@ class AddMovie extends React.Component {
     });
   }
 
-  handleSubmit = (e) => {
+  submithandler = (e) => {
     e.preventDefault();
   }
 
-  addMovie = () => {
-    let newState = { ...this.state };
-    this.props.callbackParent(newState);
+  onClick = () => {
+    this.props.onClick({...this.state})
+    this.setState({
+      ...initialState
+    });
   }
 
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.submithandler}>
           <div>
             <label>Título</label>
             <input type='text' name='title' value={this.state.title} onChange={(e) => this.onChange(e, 'title')} />
@@ -78,7 +80,7 @@ class AddMovie extends React.Component {
               ))}
             </select>
           </div>
-          <button type='submit' onClick={this.addMovie} >Adicionar filme</button>
+          <button type='submit' onClick={this.onClick} >Adicionar filme</button>
         </form>
       </>
     )
