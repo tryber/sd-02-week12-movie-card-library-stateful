@@ -55,6 +55,21 @@ class AddMovie extends React.Component {
     );
   }
 
+  fazerSelect() {
+    return (
+      <select
+        id="gen"
+        name="genre"
+        onChange={this.trocarGenre}
+        value={this.state.genre}
+      >
+        <option value="action">Ação</option>
+        <option value="comedy">Comédia</option>
+        <option value="thriller">Suspense</option>
+      </select>
+    );
+  }
+
   render() {
     const estado = this.state;
     console.log(estado);
@@ -74,14 +89,7 @@ class AddMovie extends React.Component {
         <label htmlFor="av">Avaliação</label>
         {this.fazerInput('av', 'rating', 'number', 'rating', 'trocarRating')}
         <label htmlFor="gen">Gênero</label>
-        <select
-          id="gen" name="genre"
-          onChange={this.trocarGenre} value={estado.genre}
-        >
-          <option value="action">Ação</option>
-          <option value="comedy">Comédia</option>
-          <option value="thriller">Suspense</option>
-        </select>
+        {this.fazerSelect()}
         <button onClick={this.props.callbackAddFilme}>Adicionar filme</button>
       </form>
     );
