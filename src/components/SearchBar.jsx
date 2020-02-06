@@ -41,6 +41,7 @@ class SearchBar extends Component {
 
   createGender() {
     const { selectedGenre, onSelectedGenreChange } = this.props;
+    console.log(this.props)
     return (
       <label htmlFor="gender">
         Filtrar por gênero
@@ -59,11 +60,15 @@ class SearchBar extends Component {
   }
 
   render() {
+
     return (
       <form>
         {this.createInputSearch()}
+        <br />
         {this.createCheckbox()}
+        <br />
         {this.createGender()}
+        <br />
       </form>
     );
   }

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class AddMovie extends React.Component {
+class AddMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -163,11 +163,17 @@ class AddMovie extends React.Component {
     return (
       <form>
         {this.createInputTitle()}
+        <br />
         {this.createInputSubtitle()}
+        <br />
         {this.createImage()}
+        <br />
         {this.createSynopsis()}
+        <br />
         {this.createRating()}
+        <br />
         {this.createGender()}
+        <br />
         <button onClick={() => this.clearMovie(onClick)} type="button">Adicionar filme</button>
       </form>
     );
