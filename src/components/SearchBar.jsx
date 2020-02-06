@@ -41,6 +41,7 @@ class SearchBar extends Component {
           <option value="">Todos</option>
           <option value="action">Ação</option>
           <option value="comedy">Comédia</option>
+          <option value="fantasy">Fantasia</option>
           <option value="thriller">Suspense</option>
         </select>
       </label>
