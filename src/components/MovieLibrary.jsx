@@ -36,16 +36,16 @@ class MovieLibrary extends Component {
     )
   }
 
-  filterMovies = (moves) => {
-    const textFilteredMovies = moves.filter(movie => movie.title.includes(this.state.searchText)
+  filterMovies(movies) {
+    const textFilteredMovies = movies.filter(movie => movie.title.includes(this.state.searchText)
       || movie.subtitle.includes(this.state.searchText)
       || movie.storyline.includes(this.state.searchText));
     const bookmarkedFilteredMovies = this.state.bookmarkedOnly
-      ? moves.filter(movie => movie.bookmarked) : moves;
+      ? movies.filter(movie => movie.bookmarked) : movies;
     const genreFilteredMovies = this.state.selectedGenre !== ''
-      ? moves.filter(movie => movie.genre === this.state.selectedGenre) : moves;
+      ? movies.filter(movie => movie.genre === this.state.selectedGenre) : movies;
 
-    return moves.filter(movie => textFilteredMovies.includes(movie)
+    return movies.filter(movie => textFilteredMovies.includes(movie)
       && bookmarkedFilteredMovies.includes(movie)
       && genreFilteredMovies.includes(movie)
     );
