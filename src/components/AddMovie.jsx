@@ -64,6 +64,7 @@ class AddMovie extends React.Component {
   titleSubtitleInputs() {
     const { title, subtitle } = this.state;
     return (
+      // eslint-disable-next-line react/jsx-fragments
       <React.Fragment>
         <label htmlFor="title-input">
           Título
@@ -92,7 +93,8 @@ class AddMovie extends React.Component {
   imagePathStorylineInputs() {
     const { imagePath, storyline } = this.state;
     return (
-      <>
+      // eslint-disable-next-line react/jsx-fragments
+      <React.Fragment>
         <label htmlFor="imagePath-input">
           Imagem
           <input
@@ -112,14 +114,15 @@ class AddMovie extends React.Component {
             id="storyline-input"
           />
         </label>
-      </>
+      </React.Fragment>
     );
   }
 
   ratingGenreSelection() {
     const { rating, genre } = this.state;
     return (
-      <>
+      // eslint-disable-next-line react/jsx-fragments
+      <React.Fragment>
         <label htmlFor="rating-input">
           Avaliação
           <input
@@ -138,7 +141,7 @@ class AddMovie extends React.Component {
             <option value="thriller">Suspense</option>
           </select>
         </label>
-      </>
+      </React.Fragment>
     );
   }
 
