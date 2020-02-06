@@ -44,12 +44,12 @@ class MovieLibrary extends Component {
     }
     if (selectedGenre !== '') {
       aux = aux.filter(
-        (element) => element.genre === selectedGenre
+        (element) => element.genre === selectedGenre,
       );
     }
     if (bookmarkedOnly) {
       aux = aux.filter(
-        (element) => element.bookmarked === bookmarkedOnly)
+        (element) => element.bookmarked === bookmarkedOnly);
     }
     return aux;
   }
