@@ -1,0 +1,18 @@
+form {
+  margin: 30px;
+}
+
+div {
+  margin-top: 10px;
+}
+
+input, textarea, select {
+  margin-left: 20px;
+}
+
+button {
+  border-style: none;
+  color: white;
+  background-color: #007bff;
+}
+
