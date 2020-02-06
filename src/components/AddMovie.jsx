@@ -15,6 +15,7 @@ class AddMovie extends React.Component {
     this.resetAddMovie = this.resetAddMovie.bind(this);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   get initialState() {
     return {
       subtitle: '',
@@ -63,7 +64,7 @@ class AddMovie extends React.Component {
   titleSubtitleInputs() {
     const { title, subtitle } = this.state;
     return (
-      <>
+      <React.Fragment>
         <label htmlFor="title-input">
           Título
           <input
@@ -84,7 +85,7 @@ class AddMovie extends React.Component {
             id="subtitle-input"
           />
         </label>
-      </>
+      </React.Fragment>
     );
   }
 
