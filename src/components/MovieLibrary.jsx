@@ -15,9 +15,9 @@ class MovieLibrary extends Component {
       movies: this.props.movies
     };
   }
-  changeHandler = event => {
-    const { name, value } = event.target
-    this.setState({ [name]: value })
+  changeHandlerText = event => {
+    const { value } = event.target
+    this.setState({ searchText: value })
   }
   changeBookMarker = () => {
     const booleano = this.state.bookmarkedOnly
@@ -38,6 +38,10 @@ class MovieLibrary extends Component {
     if (bookmark) return filmes.filter(filme => filme.bookmarked)
     return filmes
   }
+  addicionarFilme = () =>
+  {
+    alert('abc');
+  }
 
   render() {
     const filmes = this.state.movies
@@ -49,14 +53,14 @@ class MovieLibrary extends Component {
         <h2>My awesome Movie Library</h2>
         <SearchBar
           searchText={this.state.searchText}
-          onSearchTextChange={this.changeHandler}
+          onSearchTextChange={this.changeHandlerText}
           bookmarkedOnly={this.state.bookmarkedOnly}
           onBookmarkedChange={this.changeBookMarker}
           selectedGenre={this.state.selectedGenre}
           onSelectedGenreChange={this.changeGenre}
         />
         <MovieList movies={conteudoFiltradoPorBookmark} />
-        <AddMovie />
+        <AddMovie callbackAddFime={this.addicionarFilme}/>
       </div>)
   }
 }
