@@ -37,7 +37,8 @@ class SearchBar extends Component {
             id="Select"
             name="select"
             value={a}
-            onChange={onSelectedGenreChange}>
+            onChange={onSelectedGenreChange}
+          >
             <option value="">Todos</option>
             <option value="action">Ação</option>
             <option value="comedy">Comédia</option>
