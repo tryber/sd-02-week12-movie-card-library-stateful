@@ -16,19 +16,33 @@ class SearchBar extends Component {
     return (
       <form>
         <label htmlFor="search">Inclui o texto</label>
-        <input id="search" type="text" value={searchText} onChange={onSearchTextChange} />
+        <input
+          id="search"
+          type="text"
+          value={searchText}
+          onChange={onSearchTextChange}
+        />
         <label htmlFor="bookmarked">Mostrar somente favoritos</label>
-        <input id="bookmarked" type="checkbox" checked={bookmarkedOnly} onChange={onBookmarkedChange}/>
+        <input
+          id="bookmarked"
+          type="checkbox"
+          checked={bookmarkedOnly}
+          onChange={onBookmarkedChange}
+        />
         <label htmlFor="genre">Filtrar por gênero</label>
-        <select id="genre" value={selectedGenre} onChange={onSelectedGenreChange}>
-          {genreOptions.map(option => (
+        <select
+          id="genre"
+          value={selectedGenre}
+          onChange={onSelectedGenreChange}
+        >
+          {genreOptions.map((option) => (
             <option key={option.value} value={option.value} >
               {option.text}
             </option>
           ))}
         </select>
       </form>
-    )
+    );
   }
 }
 
