@@ -249,6 +249,7 @@ describe('<MovieLibrary /> component', () => {
     const wrapper = mount(<MovieLibrary movies={movies} />);
     const addMovie = wrapper.find('AddMovie');
     const addMovieButton = addMovie.find('form button');
+
     const newMovie = {
       subtitle: 'Harry Potter magical subtitle',
       title: 'Harry Potter VII',
@@ -257,6 +258,7 @@ describe('<MovieLibrary /> component', () => {
       rating: 4.9,
       genre: 'action',
     };
+
     const moviesList = () => wrapper.state('movies');
 
     addMovie.setState(newMovie);

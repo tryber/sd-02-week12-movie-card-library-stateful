@@ -1,9 +1,8 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 import SearchBar from './SearchBar';
-
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -14,25 +13,19 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: this.props.movies
     }
-    this.data = this.props.movies;
   }
 
   onSearchTextChange = (e) => {
     const value = e.target.value;
     this.setState({
-      searchText: value,
-      movies: this.data.filter(movie =>
-        movie.title.toLowerCase().includes(value.toLowerCase()))
+      searchText: value
     });
   }
 
   onBookmarkedChange = (e) => {
     const { checked } = e.target;
     this.setState({
-      bookmarkedOnly: checked,
-      movies: (checked) ?
-        this.data.filter(movie => movie.bookmarked) :
-        this.data
+      bookmarkedOnly: checked
     });
   }
 
@@ -40,33 +33,46 @@ class MovieLibrary extends Component {
     const value = e.target.value;
     this.setState({
       selectedGenre: value,
-      movies: this.data.filter(movie => {
-        return (value.length > 0) ?
-          movie.genre === value :
-          true
-      })
     });
+  }
+
+  filter = (state) => {
+    const { searchText, bookmarkedOnly, selectedGenre } = state;
+    let arr = state.movies;
+
+    arr = [...this.props.movies.filter(movie =>
+        movie.title.toLowerCase().includes(searchText.toLowerCase()) ||
+        movie.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
+        movie.storyline.toLowerCase().includes(searchText.toLowerCase())
+        )
+    ];
+
+    arr = [... (bookmarkedOnly) ?
+        arr.filter(movie => movie.bookmarked) :
+        arr
+    ];
+
+    arr = [...(selectedGenre.length > 0) ?
+      arr.filter(movie => movie.genre === selectedGenre) :
+      arr
+    ];
+
+    return arr;
   }
 
   onClick = (newState) => {
-    this.data[this.data.length] = newState;
+    const array = [...this.state.movies, newState];
     this.setState({
-      ...this.state,
-      movies: this.data
+      // ...this.state,
+      movies: [...array ]
     });
-  }
-
-  test = (e) => {
-    this.setState({
-      bookmarkedOnly: e.target.checked
-    })
   }
 
   render() {
     return (
       <>
         <h2>My awesome Movie Library</h2>
-        <MovieList movies={this.state.movies} />
+        <MovieList movies={this.filter(this.state)} />
         <AddMovie onClick={this.onClick} />
         <SearchBar
           searchText={this.state.searchText}
@@ -76,7 +82,6 @@ class MovieLibrary extends Component {
           selectedGenre={this.state.selectedGenre}
           onSelectedGenreChange={this.onSelectedGenreChange}
         />
-        <input type="checkbox" value={this.state.bookmarkedOnly} onChange={this.test} />
       </>
     )
   }
