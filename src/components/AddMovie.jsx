@@ -75,8 +75,12 @@ class AddMovie extends React.Component {
     return (
       <label htmlFor="subtitle">
         Subtítulo
-        <input type="text" value={this.state.subtitle} onChange={this.updateSubtitle}
-        id="subtitle" />
+        <input
+          type="text"
+          value={this.state.subtitle}
+          onChange={this.updateSubtitle}
+          id="subtitle"
+        />
       </label>
     );
   }
@@ -85,8 +89,12 @@ class AddMovie extends React.Component {
     return (
       <label htmlFor="image-path">
         Imagem
-        <input type="text" value={this.state.imagePath} onChange={this.updateImagePath}
-        id="image-path" />
+        <input
+          type="text"
+          value={this.state.imagePath}
+          onChange={this.updateImagePath}
+          id="image-path"
+        />
       </label>
     );
   }
