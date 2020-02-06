@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar'
+import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -12,15 +14,23 @@ class MovieLibrary extends Component {
     }
   }
 
+procuraTexto = () => {
+  this.setState((state) => {
+    return state
+  })
+}
+
   render() {
     return (
       <div>
-        <SearchBar 
-          searchText={this.state.searchText}
+        <h2>My awesome Movie Library</h2>
+        <SearchBar
+          searchText={this.state.procuraTexto}
           bookmarkedOnly={this.state.bookmarkedOnly}
           selectedGenre={this.state.selectedGenre}
         />
-        <h2>My awesome Movie Library</h2>
+        <MovieList movies={this.props.movies} />
+        <AddMovie />
       </div>
     );
   }
