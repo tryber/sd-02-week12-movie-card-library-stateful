@@ -18,6 +18,38 @@ class AddMovie extends React.Component {
     this.storylineChange = this.storylineChange.bind(this);
     this.ratingChange = this.ratingChange.bind(this);
     this.genreChange = this.genreChange.bind(this);
+    this.clearMovie = this.clearMovie.bind(this);
+  }
+
+  titleChange(event) {
+    const title = event.target.value;
+    this.setState({ title });
+  }
+
+  subtitleChange(event) {
+    const subtitle = event.target.value;
+    this.setState({ subtitle });
+  }
+
+  imageChange(event) {
+    const imagePath = event.target.value;
+    this.setState({ imagePath });
+  }
+
+
+  storylineChange(event) {
+    const storyline = event.target.value;
+    this.setState({ storyline });
+  }
+
+  ratingChange(event) {
+    const rating = parseFloat(event.target.value);
+    this.setState({ rating });
+  }
+
+  genreChange(event) {
+    const genre = event.target.value;
+    this.setState({ genre });
   }
 
   createInputTitle() {
@@ -72,12 +104,13 @@ class AddMovie extends React.Component {
     const { storyline } = this.state;
     return (
       <label htmlFor="storyline">
-        Sinopse:
+        Sinopse
         <textarea
           id="storyline"
           value={storyline}
           onChange={this.storylineChange}
           name="storyline"
+
         />
       </label>
     );
@@ -112,20 +145,32 @@ class AddMovie extends React.Component {
     );
   }
 
+  clearMovie(onClick) {
+    const movie = this.state;
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+    onClick(movie);
+  }
+
   render() {
     const { onClick } = this.props;
     return (
       <form>
-        {this.createInputTitle}
-        {this.createInputSubtitle}
-        {this.createImage}
-        {this.createSynopsis}
-        {this.createRating}
-        {this.createGender}
-        <button onClick={onClick} type="button"> Adicionar filme </button>
+        {this.createInputTitle()}
+        {this.createInputSubtitle()}
+        {this.createImage()}
+        {this.createSynopsis()}
+        {this.createRating()}
+        {this.createGender()}
+        <button onClick={() => this.clearMovie(onClick)} type="button">Adicionar filme</button>
       </form>
     );
   }
 }
-
 export default AddMovie;
