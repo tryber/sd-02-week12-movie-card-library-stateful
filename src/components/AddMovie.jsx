@@ -57,8 +57,10 @@ class AddMovie extends React.Component {
     this.setState({ genre: value });
   }
 
-  resetAddMovie() {
+  resetAddMovie(onClick) {
+    const movie = this.state;
     this.setState(this.initialState);
+    onClick(movie);
   }
 
   titleSubtitleInputs() {
@@ -154,8 +156,7 @@ class AddMovie extends React.Component {
         {this.ratingGenreSelection()}
         <button
           type="button"
-          value={onClick(this.state)}
-          onClick={this.resetAddMovie}
+          onClick={() => this.resetAddMovie(onClick)}
         >
           Adicionar filme
         </button>
