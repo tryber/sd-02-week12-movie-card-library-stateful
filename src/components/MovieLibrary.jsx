@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -14,15 +15,12 @@ class MovieLibrary extends Component {
     this.updateSearchText = this.updateSearchText.bind(this);
     this.updateBookmarkedOnly = this.updateBookmarkedOnly.bind(this);
     this.updateSelectedGenre = this.updateSelectedGenre.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   updateSearchText(event) {
     this.setState(
       { searchText: event.target.value },
-    )
-    this.setState((state) =>
-      ({ movies: this.props.movies.filter(movie => movie.title.includes(state.searchText)
-        || movie.subtitle.includes(state.searchText) || movie.storyline.includes(state.searchText)) }),
     )
   }
 
@@ -38,12 +36,26 @@ class MovieLibrary extends Component {
     )
   }
 
-  // funcaosemnome = (array) => {
-  //   this.setState((state) =>
-  //     ({ movies: array.filter(movie => movie.title.includes(state.searchText)
-  //       || movie.subtitle.includes(state.searchText) || movie.storyline.includes(state.searchText)) }),
-  //   )
-  // }
+  filterMovies = (moves) => {
+    const textFilteredMovies = moves.filter(movie => movie.title.includes(this.state.searchText)
+      || movie.subtitle.includes(this.state.searchText)
+      || movie.storyline.includes(this.state.searchText));
+    const bookmarkedFilteredMovies = this.state.bookmarkedOnly
+      ? moves.filter(movie => movie.bookmarked) : moves;
+    const genreFilteredMovies = this.state.selectedGenre !== ''
+      ? moves.filter(movie => movie.genre === this.state.selectedGenre) : moves;
+
+    return moves.filter(movie => textFilteredMovies.includes(movie)
+      && bookmarkedFilteredMovies.includes(movie)
+      && genreFilteredMovies.includes(movie)
+    );
+  }
+
+  addMovie(newMovie) {
+    this.setState(
+      { movies: [...this.state.movies, newMovie] },
+    );
+  }
 
   render() {
     return (
@@ -57,7 +69,8 @@ class MovieLibrary extends Component {
           selectedGenre={this.state.selectedGenre}
           onSelectedGenreChange={this.updateSelectedGenre}
         />
-        <MovieList movies={this.state.movies} />
+        <MovieList movies={this.filterMovies(this.state.movies)} />
+        <AddMovie onClick={this.addMovie} />
       </section>
     );
   }

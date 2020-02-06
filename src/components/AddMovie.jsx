@@ -57,11 +57,6 @@ class AddMovie extends React.Component {
     );
   }
 
-  resetAddMovie() {
-    this.props.onClick(this.state);
-    this.setState(AddMovie.initialState);
-  }
-
   labelTitle() {
     return (
       <label htmlFor="title">
@@ -128,6 +123,11 @@ class AddMovie extends React.Component {
         </select>
       </label>
     );
+  }
+
+  resetAddMovie() {
+    this.props.onClick(this.state);
+    this.setState(AddMovie.initialState);
   }
 
   buttonReset() {
