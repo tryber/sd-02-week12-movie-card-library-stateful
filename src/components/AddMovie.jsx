@@ -115,7 +115,7 @@ class AddMovie extends React.Component {
   }
 
   Click(fun) {
-    const state = this.state;
+    fun(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -124,7 +124,6 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     });
-    fun(state);
   }
 
   render() {
