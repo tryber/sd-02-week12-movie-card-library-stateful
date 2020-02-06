@@ -63,11 +63,10 @@ class AddMovie extends React.Component {
     });
   }
 
-  render() {
-    const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+  titleSubtitleInputs() {
+    const { title, subtitle } = this.state;
     return (
-      <form>
+      <>
         <label htmlFor="title-input">
           Título
           <input
@@ -88,6 +87,14 @@ class AddMovie extends React.Component {
             id="subtitle-input"
           />
         </label>
+      </>
+    );
+  }
+
+  imagePathStorylineInputs() {
+    const { imagePath, storyline } = this.state;
+    return (
+      <>
         <label htmlFor="imagePath-input">
           Imagem
           <input
@@ -107,6 +114,14 @@ class AddMovie extends React.Component {
             id="storyline-input"
           />
         </label>
+      </>
+    );
+  }
+
+  ratingGenreSelection() {
+    const { rating, genre } = this.state;
+    return (
+      <>
         <label htmlFor="rating-input">
           Avaliação
           <input
@@ -125,6 +140,17 @@ class AddMovie extends React.Component {
             <option value="thriller">Suspense</option>
           </select>
         </label>
+      </>
+    );
+  }
+
+  render() {
+    const { onClick } = this.props;
+    return (
+      <form>
+        {this.titleSubtitleInputs()}
+        {this.imagePathStorylineInputs()}
+        {this.ratingGenreSelection()}
         <button
           type="button"
           value={onClick(this.state)}
