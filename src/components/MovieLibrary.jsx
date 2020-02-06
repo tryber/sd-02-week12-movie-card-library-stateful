@@ -28,7 +28,7 @@ class MovieLibrary extends Component {
   }
   changeBookMarker() {
     const booleano = this.state.bookmarkedOnly;
-    const retorno = booleano ? false : true;
+    const retorno = booleano !== true;
     this.setState({ bookmarkedOnly: retorno });
   }
   changeGenre(event) {
@@ -40,7 +40,7 @@ class MovieLibrary extends Component {
   }
   filtrarPorGenero(filmes, genero) {
     if (!genero) return filmes;
-    return filmes.filter((filme) => filme.genre === genero)
+    return filmes.filter((filme) => filme.genre === genero);
   }
   filtrarPorBookmark(filmes, bookmark) {
     if (bookmark) return filmes.filter((filme) => filme.bookmarked);
@@ -54,10 +54,10 @@ class MovieLibrary extends Component {
   render() {
     const filmes = this.state.movies;
     const conteudoFiltradoPorTexto = this.filtrarPorText(filmes, this.state.searchText);
-    const conteudoFiltradoPorGenero = this.
-      filtrarPorGenero(conteudoFiltradoPorTexto, this.state.selectedGenre);
-    const conteudoFiltradoPorBookmark = this.
-      filtrarPorBookmark(conteudoFiltradoPorGenero, this.state.bookmarkedOnly);
+    const conteudoFiltradoPorGenero = this.filtrarPorGenero(conteudoFiltradoPorTexto,
+      this.state.selectedGenre);
+    const conteudoFiltradoPorBookmark = this.filtrarPorBookmark(conteudoFiltradoPorGenero,
+      this.state.bookmarkedOnly);
     return (
       <div>
         <h2>My awesome Movie Library</h2>

@@ -53,29 +53,35 @@ class AddMovie extends React.Component {
     const estado = this.state;
     return (
       <form>
-        <label htmlFor='name'>Título</label><br></br>
-        <input id='name' name="title" type="text" value={estado.title}
+        <label htmlFor="name">Título</label><br />
+        <input id="name" name="title" type="text" value={estado.title}
           onChange={this.trocarTitle}
         /><br />
-        <label htmlFor='sub'>Subtítulo</label><br></br>
-        <input id='sub' name="subtitle" type="text" value={estado.subtitle}
+        <label htmlFor="sub">Subtítulo</label><br />
+        <input
+          id="sub" name="subtitle" type="text" value={estado.subtitle}
           onChange={this.trocarSubtitle}
         /><br />
-        <label htmlFor='img'>Imagem</label><br></br>
-        <input id='img' name="imagePath" type="text" value={estado.imagePath}
+        <label htmlFor="img">Imagem</label><br />
+        <input id="img"
+          name="imagePath" type="text" value={estado.imagePath}
           onChange={this.trocarImagePath}
         /><br />
-        <label htmlFor='sin'>Sinopse</label><br></br>
-        <textarea id='sin' name="storyline" value={estado.storyline}
+        <label htmlFor="sin">Sinopse</label><br />
+        <textarea
+          id="sin" name="storyline" value={estado.storyline}
           onChange={this.trocarStoryline}
         /><br />
-        <label htmlFor='av'>Avaliação</label><br></br>
-        <input id='av' name="rating" type="number" value={estado.rating}
+        <label htmlFor="av">Avaliação</label><br />
+        <input
+          id="av" name="rating" type="number" value={estado.rating}
           onChange={this.trocarRating}
         /><br />
-        <label htmlFor='gen'>Gênero</label><br></br>
-        <select id='gen' name="genre"
-          onChange={this.trocarGenre} value={estado.genre}>
+        <label htmlFor="gen">Gênero</label><br />
+        <select
+          id="gen" name="genre"
+          onChange={this.trocarGenre} value={estado.genre}
+        >
           <option value="action">Ação</option>
           <option value="comedy">Comédia</option>
           <option value="thriller">Suspense</option>
