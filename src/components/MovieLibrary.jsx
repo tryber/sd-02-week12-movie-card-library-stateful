@@ -38,8 +38,8 @@ class MovieLibrary extends Component {
     if (bookmark) return filmes.filter(filme => filme.bookmarked)
     return filmes
   }
-  addicionarFilme = () =>
-  {
+  addicionarFilme = (event) => {
+    event.preventDefault();
     alert('abc');
   }
 
@@ -60,7 +60,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={this.changeGenre}
         />
         <MovieList movies={conteudoFiltradoPorBookmark} />
-        <AddMovie callbackAddFime={this.addicionarFilme}/>
+        <AddMovie callbackAddFilme={this.addicionarFilme} />
       </div>)
   }
 }
