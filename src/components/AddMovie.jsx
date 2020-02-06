@@ -27,7 +27,7 @@ class AddMovie extends React.Component {
           id="labelInputTitle"
           type="text"
           value={title}
-          onChange={'AAAA'}
+          onChange={(e) => this.setState({ title: e.target.value })}
         />
       </div>
     );
@@ -42,7 +42,7 @@ class AddMovie extends React.Component {
           id="labelInputSubTitle"
           type="text"
           value={subtitle}
-          onChange={'AAAA'}
+          onChange={(e) => this.setState({ subtitle: e.target.value })}
         />
       </div>
     );
@@ -57,7 +57,7 @@ class AddMovie extends React.Component {
           id="labelInputImage"
           type="text"
           value={imagePath}
-          onChange={'AAAA'}
+          onChange={(e) => this.setState({ imagePath: e.target.value })}
         />
       </div>
     );
@@ -72,7 +72,7 @@ class AddMovie extends React.Component {
           id="labelInputSinopse"
           type="textarea"
           value={storyline}
-          onChange={'AAAA'}
+          onChange={(e) => this.setState({ storyline: e.target.value })}
         />
       </div>
     );
@@ -87,7 +87,9 @@ class AddMovie extends React.Component {
           id="labelInputRating"
           type="number"
           value={rating}
-          onChange={'AAAA'}
+          onChange={(e) => this.setState({ rating: parseFloat(e.target.value) })}
+          min="0"
+          max="5"
         />
       </div>
     );
@@ -97,24 +99,36 @@ class AddMovie extends React.Component {
     const { genre } = this.state;
     return (
       <div>
-        <label htmlFor="InputSelect">
-          Filtrar por gênero
-          <select
-            id="InputSelect"
-            name="select"
-            value={genre}
-            onChange={'aa'}
-          >
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-          </select>
-        </label>
+        <label htmlFor="InputSelect">Gênero</label>
+        <select
+          id="InputSelect"
+          name="select"
+          value={genre}
+          onChange={(e) => this.setState({ genre: e.target.value })}
+        >
+          <option value="action">Ação</option>
+          <option value="comedy">Comédia</option>
+          <option value="thriller">Suspense</option>
+        </select>
       </div>
-    )
+    );
+  }
+
+  Click(fun) {
+    const state = this.state;
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+    fun(state);
   }
 
   render() {
+    const { onClick } = this.props;
     return (
       <form>
         {this.InputTitle()}
@@ -123,9 +137,9 @@ class AddMovie extends React.Component {
         {this.InputSinopse()}
         {this.InputRating()}
         {this.InputGenre()}
-        <button onClick={'aa'}>Adicionar filme</button>
+        <button type="button" onClick={() => this.Click(onClick)}>Adicionar filme</button>
       </form>
-    )
+    );
   }
 }
 

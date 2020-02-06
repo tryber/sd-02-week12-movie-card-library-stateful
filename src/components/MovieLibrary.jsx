@@ -7,6 +7,7 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    this.createNew = this.createNew.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
@@ -54,8 +55,12 @@ class MovieLibrary extends Component {
     return aux;
   }
 
+  createNew(e) {
+    this.setState((state) => ({ movies: [...state.movies, e] }));
+  }
+
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -68,9 +73,9 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={(e) => this.onSelectedGenreChange(e)}
         />
         <MovieList
-          movies={this.filter(movies)}
+          movies={this.filter(this.state.movies)}
         />
-        <AddMovie onClick={'a'} />
+        <AddMovie onClick={this.createNew} />
       </div>
     );
   }
