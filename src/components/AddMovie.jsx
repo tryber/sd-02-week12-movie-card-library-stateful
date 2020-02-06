@@ -23,37 +23,37 @@ class AddMovie extends React.Component {
 
   updateTitle(event) {
     this.setState(
-      { title: event.target.value }
+      { title: event.target.value },
     );
   }
 
   updateSubtitle(event) {
     this.setState(
-      { subtitle: event.target.value }
+      { subtitle: event.target.value },
     );
   }
 
   updateImagePath(event) {
     this.setState(
-      { imagePath: event.target.value }
+      { imagePath: event.target.value },
     );
   }
 
   updateStoryline(event) {
     this.setState(
-      { storyline: event.target.value }
+      { storyline: event.target.value },
     );
   }
 
   updateRating(event) {
     this.setState(
-      { rating: Number(event.target.value) }
+      { rating: Number(event.target.value) },
     );
   }
 
   updateGenre(event) {
     this.setState(
-      { genre: event.target.value }
+      { genre: event.target.value },
     );
   }
 
@@ -62,22 +62,82 @@ class AddMovie extends React.Component {
     this.setState(AddMovie.initialState);
   }
 
+  labelTitle() {
+    return (
+      <label htmlFor="title">
+        Título
+        <input type="text" value={this.state.title} onChange={this.updateTitle} id="title" />
+      </label>
+    );
+  }
+
+  labelSubtitle() {
+    return (
+      <label htmlFor="subtitle">
+        Subtítulo
+        <input type="text" value={this.state.subtitle} onChange={this.updateSubtitle} id="subtitle" />
+      </label>
+    );
+  }
+
+  labelImagePath() {
+    return (
+      <label htmlFor="image-path">
+        Imagem
+        <input type="text" value={this.state.imagePath} onChange={this.updateImagePath} id="image-path" />
+      </label>
+    );
+  }
+
+  labelStoryline() {
+    return (
+      <label htmlFor="storyline">
+        Sinopse
+        <textarea value={this.state.storyline} onChange={this.updateStoryline} id="storyline" />
+      </label>
+    );
+  }
+
+  labelRating() {
+    return (
+      <label htmlFor="rating">
+        Avaliação
+        <input type="number" value={this.state.rating} onChange={this.updateRating} id="rating" />
+      </label>
+    );
+  }
+
+  labelGenre() {
+    return (
+      <label htmlFor="genre">
+        Gênero
+        <select value={this.state.genre} onChange={this.updateGenre} id="genre">
+          <option value="action">Ação</option>
+          <option value="comedy">Comédia</option>
+          <option value="thriller">Suspense</option>
+        </select>
+      </label>
+    );
+  }
+
+  buttonReset() {
+    return (
+      <button onClick={this.resetAddMovie}>
+        Adicionar filme
+      </button>
+    );
+  }
+
   render() {
     return (
       <form>
-        <label>Título<input type="text" value={this.state.title} onChange={this.updateTitle} /></label>
-        <label>Subtítulo<input type="text" value={this.state.subtitle} onChange={this.updateSubtitle} /></label>
-        <label>Imagem<input type="text" value={this.state.imagePath} onChange={this.updateImagePath} /></label>
-        <label>Sinopse<textarea value={this.state.storyline} onChange={this.updateStoryline} /></label>
-        <label>Avaliação<input type="number" value={this.state.rating} onChange={this.updateRating} /></label>
-        <label>Gênero
-          <select value={this.state.genre} onChange={this.updateGenre}>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-          </select>
-        </label>
-        <button onClick={this.resetAddMovie}>Adicionar filme</button>
+        {this.labelTitle()}
+        {this.labelSubtitle()}
+        {this.labelImagePath()}
+        {this.labelStoryline()}
+        {this.labelRating()}
+        {this.labelGenre()}
+        {this.buttonReset()}
       </form>
     );
   }
