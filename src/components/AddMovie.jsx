@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 class AddMovie extends React.Component {
   constructor(props) {
