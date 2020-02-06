@@ -12,7 +12,12 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: this.props.movies,
-    }
+    };
+    this.createMovieCard = this.createMovieCard.bind(this);
+  }
+
+  createMovieCard(value) {
+    this.setState((state) => ({ movies: state.movies.concat(value) }));
   }
 
   render() {
@@ -28,7 +33,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={this.state.onSelectedGenreChange}
         />
         <MovieList movies={this.props.movies} />
-        <AddMovie />
+        <AddMovie onClick={this.createMovieCard} />
       </div>
     );
   }

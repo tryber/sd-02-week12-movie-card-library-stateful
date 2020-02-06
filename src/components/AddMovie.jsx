@@ -12,8 +12,20 @@ class AddMovie extends React.Component {
       genre: 'action',
     }
     this.changeInput = this.changeInput.bind(this);
+    this.movieAddClean = this.movieAddClean.bind(this);
   }
 
+  movieAddClean (onClick) {
+    onClick(this.state);
+    this.setState(() => ({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    }));
+  }
 
   changeInput (e, nome) {
     const { value } = e.target;
@@ -76,7 +88,7 @@ class AddMovie extends React.Component {
           {this.inputTextArea('Sinopse', 'storyline', this.changeInput)}
           {this.inputText('Avaliação', 'number', 'rating', this.changeInput)}
           {this.selectBox('genre')}
-          <button>Adicionar filme</button>
+          <button type="button" onClick={() => this.movieAddClean(this.props.onClick)}>Adicionar filme</button>
         </fieldset>
       </form>
     );
