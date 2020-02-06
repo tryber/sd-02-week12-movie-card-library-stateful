@@ -1,26 +1,53 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
+  labelText(searchText, onSearchTextChange) {
+    return (
+      <label htmlFor="text">
+        Inclui o texto:
+        <input type="text" value={searchText} onChange={onSearchTextChange} id="text" />
+      </label>
+    );
+  }
+
+  labelCheckbox(bookmarkedOnly, onBookmarkedChange) {
+    return (
+      <label htmlFor="checkbox">
+        Mostrar somente favoritos
+        <input type="checkbox" checked={bookmarkedOnly} onChange={onBookmarkedChange} id="checkbox" />
+      </label>
+    );
+  }
+
+  labelSelect(selectedGenre, onSelectedGenreChange) {
+    return (
+      <label htmlFor="select">
+        Filtrar por gênero
+        <select value={selectedGenre} onChange={onSelectedGenreChange} id="select">
+          <option value="">Todos</option>
+          <option value="action">Ação</option>
+          <option value="comedy">Comédia</option>
+          <option value="thriller">Suspense</option>
+        </select>
+      </label>
+    );
+  }
+
   render() {
+    const {
+      searchText,
+      onBookmarkedChange,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onSelectedGenreChange,
+      selectedGenre,
+    } = this.props;
+
     return (
       <form>
-        <label htmlFor="text">
-          Inclui o texto:
-          <input type="text" value={this.props.searchText} onChange={this.props.onSearchTextChange} id="text" />
-        </label>
-        <label htmlFor="checkbox">
-          Mostrar somente favoritos
-          <input type="checkbox" checked={this.props.bookmarkedOnly} onChange={this.props.onBookmarkedChange} id="checkbox" />
-        </label>
-        <label htmlFor="select">
-          Filtrar por gênero
-          <select value={this.props.selectedGenre} onChange={this.props.onSelectedGenreChange} id="select">
-            <option value="">Todos</option>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-          </select>
-        </label>
+        {this.labelText(searchText, onSearchTextChange)}
+        {this.labelCheckbox(bookmarkedOnly, onBookmarkedChange)}
+        {this.labelSelect(selectedGenre, onSelectedGenreChange)}
       </form>
     );
   }
