@@ -24,9 +24,9 @@ class MovieLibrary extends Component {
     const { value } = e.target;
     this.setState(() => ({
       searchText: value,
-      movies: arrMovies.filter((element) => (element.title.includes(searchText)
-        || element.subtitle.includes(searchText)
-        || element.storyline.includes(searchText))),
+      movies: arrMovies.filter((element) =>(element.title.includes(searchText) 
+      || element.subtitle.includes(searchText)
+      || element.storyline.includes(searchText))),
     }));
   }
 
