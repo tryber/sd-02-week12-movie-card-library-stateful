@@ -50,13 +50,13 @@ class SearchBar extends Component {
   render() {
     return (
       <form>
-        <fieldset>
+        {<fieldset>
           {this.inputText()}
           <br />
           {this.inputCheckbox()}
           <br />
           {this.selectBox()}
-        </fieldset>
+        </fieldset>}
       </form>
     );
   }
