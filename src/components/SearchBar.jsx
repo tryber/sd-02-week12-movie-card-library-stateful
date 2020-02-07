@@ -18,7 +18,7 @@ class SearchBar extends Component {
         <label htmlFor="search">Inclui o texto</label>
         <input id="search" type="text"
           value={searchText}
-          onChange={onSearchTextChange}/>
+          onChange={onSearchTextChange} />
         <label htmlFor="bookmarked">Mostrar somente favoritos</label>
         <input id="bookmarked" type="checkbox"
           checked={bookmarkedOnly}
@@ -27,7 +27,7 @@ class SearchBar extends Component {
         <select id="genre" value={selectedGenre}
           onChange={onSelectedGenreChange}>
           {genreOptions.map((option) => (
-            <option key={option.value} value={option.value} >
+            <option key={option.value} value={option.value}>
               {option.text}
             </option>
           ))}
