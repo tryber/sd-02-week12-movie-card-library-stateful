@@ -22,7 +22,7 @@ body {
 .movie-list {
   display: flex;
   flex-flow: row wrap;
-  padding: 48px 30px;
+  padding: 48px;
 }
 
 .movie-card {
@@ -80,4 +80,13 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 12px 20px;
+}
+
+.search-bar {
+  display: flex;  
+  flex-direction: column;
+}
+
+.add-movie label {
+  margin: 5px;  
 }

@@ -27,12 +27,13 @@ class SearchBar extends Component {
     const { bookmarkedOnly, onBookmarkedChange } = this.props;
 
     return (
-      <label htmlFor="checkbox">
+      <label htmlFor="bookmarked">
         Mostrar somente favoritos
         <input
-          id="checkbox"
+          id="bookmarked"
           type="checkbox"
           checked={bookmarkedOnly}
+          name="bookmarkedOnly"
           onChange={onBookmarkedChange}
         />
       </label>
@@ -41,7 +42,6 @@ class SearchBar extends Component {
 
   createGender() {
     const { selectedGenre, onSelectedGenreChange } = this.props;
-    console.log(this.props)
     return (
       <label htmlFor="gender">
         Filtrar por gênero
@@ -60,7 +60,6 @@ class SearchBar extends Component {
   }
 
   render() {
-
     return (
       <form>
         {this.createInputSearch()}

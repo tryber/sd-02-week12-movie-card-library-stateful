@@ -43,7 +43,7 @@ class MovieLibrary extends Component {
     const { movies } = this.state;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const filterBookmark = bookmarkedOnly ? movies.filter((movie) => movie.bookmarked) : movies;
-    const filterGenre = selectedGenre ? filterBookmark.filter((movie) => movie.genre === selectedGenre) : movies;
+    const filterGenre = selectedGenre ? filterBookmark.filter((movie) => movie.genre === selectedGenre) : filterBookmark;
     const filterText = filterGenre.filter((movie) => movie.title.includes(searchText)
       || movie.subtitle.includes(searchText)
       || movie.storyline.includes(searchText));
@@ -54,18 +54,24 @@ class MovieLibrary extends Component {
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
-      <div>
-        <h2> My awesome movie library </h2>
-        <SearchBar
-          searchText={searchText}
-          onSearchTextChange={this.onSearchTextChange}
-          bookmarkedOnly={bookmarkedOnly}
-          onBookmarkedChange={this.onBookmarkedChange}
-          selectedGenre={selectedGenre}
-          onSelectedGenreChange={this.onSelectedGenreChange}
-        />
-        <MovieList movies={this.filterMovies(this.state)} />
-        <AddMovie onClick={this.addMovie} />
+      <div className="container">
+        <div className="search-bar">
+          <h2> My awesome movie library </h2>
+          <SearchBar
+            searchText={searchText}
+            onSearchTextChange={this.onSearchTextChange}
+            bookmarkedOnly={bookmarkedOnly}
+            onBookmarkedChange={this.onBookmarkedChange}
+            selectedGenre={selectedGenre}
+            onSelectedGenreChange={this.onSelectedGenreChange}
+          />
+        </div>
+        <div>
+          <MovieList movies={this.filterMovies(this.state)} />
+        </div>
+        <div className="add-movie">
+          <AddMovie onClick={this.addMovie} />
+        </div>
       </div>
     );
   }
