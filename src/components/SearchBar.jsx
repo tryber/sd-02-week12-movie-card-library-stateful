@@ -8,10 +8,9 @@ const genreOptions = [
 ];
 
 class SearchBar extends Component {
-
   searchText(searchText, onSearchTextChange) {
     return (
-      <>
+      <div>
         <label htmlFor="search">Inclui o texto</label>
         <input
           id="search"
@@ -19,7 +18,7 @@ class SearchBar extends Component {
           value={searchText}
           onChange={onSearchTextChange}
         />
-      </>
+      </div>
     )
   }
 

@@ -23,9 +23,10 @@ class AddMovie extends React.Component {
     this.state = {
       ...initialState
     }
+    this.onChange = this.onChange.bind(this);
   }
 
-  onChange = (e, name) => {
+  onChange(e, name) {
     let value = e.target.value;
     if (name === 'rating') {
       value = parseFloat(e.target.value, 10);
@@ -35,7 +36,7 @@ class AddMovie extends React.Component {
     });
   }
 
-  submithandler = (e) => {
+  submithandler(e) {
     e.preventDefault();
   }
 
