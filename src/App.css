@@ -37,7 +37,6 @@ body {
   width: 300px;
 }
 
-
 .movie-card-image {
   width: 100%;
 }
@@ -83,10 +82,10 @@ body {
 }
 
 .search-bar {
-  display: flex;  
+  display: flex;
   flex-direction: column;
 }
 
 .add-movie label {
-  margin: 5px;  
+  margin: 5px;
 }
