@@ -14,6 +14,7 @@ class MovieLibrary extends Component {
       movies: this.props.movies
     }
     this.filter = this.filter.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onSearchTextChange(e) {
@@ -61,7 +62,7 @@ class MovieLibrary extends Component {
     return arr;
   }
 
-  onClick = (newState) => {
+  onClick(newState) {
     const array = [...this.state.movies, newState];
     this.setState({
       ...this.state,

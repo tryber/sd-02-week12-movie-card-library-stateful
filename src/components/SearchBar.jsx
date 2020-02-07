@@ -38,7 +38,7 @@ class SearchBar extends Component {
 
   genre(selectedGenre, onSelectedGenreChange) {
     return (
-      <>
+      <div>
         <label htmlFor="genre">Filtrar por gênero</label>
         <select
           id="genre"
@@ -51,7 +51,7 @@ class SearchBar extends Component {
           </option>
         ))}
         </select>
-      </>
+      </div>
     )
   }
 
