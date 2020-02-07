@@ -40,7 +40,7 @@ class AddMovie extends React.Component {
     e.preventDefault();
   }
 
-  onClick = () => {
+  onClick() {
     this.props.onClick({...this.state});
     this.setState({
       ...initialState
@@ -144,7 +144,7 @@ class AddMovie extends React.Component {
         {this.sinopse()}
         {this.rating()}
         {this.selectBox()}
-        <button type='submit' onClick={this.onClick}>Adicionar filme</button>
+        <button type='submit' onClick={() => this.onClick()}>Adicionar filme</button>
       </form>
     )
   }

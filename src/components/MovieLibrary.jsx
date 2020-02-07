@@ -13,6 +13,7 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: this.props.movies
     }
+    this.filter = this.filter.bind(this);
   }
 
   onSearchTextChange(e) {
@@ -36,7 +37,7 @@ class MovieLibrary extends Component {
     });
   }
 
-  filter = (state) => {
+  filter(state) {
     const { searchText, bookmarkedOnly, selectedGenre } = state;
     let arr = state.movies;
 

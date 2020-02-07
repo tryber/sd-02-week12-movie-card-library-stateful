@@ -24,7 +24,7 @@ class SearchBar extends Component {
 
   bookmarked(bookmarkedOnly, onBookmarkedChange,) {
     return (
-      <>
+      <div>
         <label htmlFor="bookmarked">Mostrar somente favoritos</label>
         <input
           id="bookmarked"
@@ -32,7 +32,7 @@ class SearchBar extends Component {
           checked={bookmarkedOnly}
           onChange={onBookmarkedChange}
         />
-      </>
+      </div>
     )
   }
 
