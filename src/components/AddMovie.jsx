@@ -18,11 +18,14 @@ const initialState = {
 };
 
 class AddMovie extends React.Component {
+  static submithandler(e) {
+    e.preventDefault();
+  }
+
   constructor(props) {
     super(props);
     this.state = { ...initialState };
     this.onChange = this.onChange.bind(this);
-    this.submithandler = this.submithandler.bind(this);
   }
 
   onChange(e, name) {
@@ -36,10 +39,6 @@ class AddMovie extends React.Component {
   onClick() {
     this.props.onClick({ ...this.state });
     this.setState({ ...initialState });
-  }
-
-  submithandler(e) {
-    e.preventDefault();
   }
 
   selectBox() {
@@ -133,7 +132,7 @@ class AddMovie extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.submithandler}>
+      <form onSubmit={AddMovie.submithandler}>
         {this.title()}
         {this.subtitle()}
         {this.image()}
