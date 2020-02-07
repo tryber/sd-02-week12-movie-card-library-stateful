@@ -72,7 +72,7 @@ class MovieLibrary extends Component {
 
   render() {
     return (
-      <>
+      <div>
         <h2>My awesome Movie Library</h2>
         <SearchBar
           searchText={this.state.searchText}
@@ -84,8 +84,8 @@ class MovieLibrary extends Component {
         />
         <MovieList movies={this.filter(this.state)} />
         <AddMovie onClick={this.onClick} />
-      </>
-    )
+      </div>
+    );
   }
 }
 

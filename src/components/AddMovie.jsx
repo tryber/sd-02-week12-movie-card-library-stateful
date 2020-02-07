@@ -62,7 +62,7 @@ class AddMovie extends React.Component {
             </option>))}
         </select>
       </div>
-    )
+    );
   }
 
   rating() {
@@ -76,24 +76,22 @@ class AddMovie extends React.Component {
           onChange={(e) => this.onChange(e, 'rating')}
         />
       </div>
-    )
+    );
   }
 
   title() {
     return (
-      <>
-        <div>
-          <label htmlFor='title'>Título</label>
-          <input
-            id='title'
-            type='text'
-            name='title'
-            value={this.state.title}
-            onChange={(e) => this.onChange(e, 'title')}
-          />
-        </div>
-      </>
-    )
+      <div>
+        <label htmlFor='title'>Título</label>
+        <input
+          id='title'
+          type='text'
+          name='title'
+          value={this.state.title}
+          onChange={(e) => this.onChange(e, 'title')}
+        />
+      </div>
+    );
   }
 
   subtitle() {
@@ -102,23 +100,21 @@ class AddMovie extends React.Component {
         <label htmlFor='subtitle'>Subtítulo</label>
         <input id='subtitle' type='text' name='subtitle' value={this.state.subtitle} onChange={(e) => this.onChange(e, 'subtitle')} />
       </div>
-    )
+    );
   }
 
   image() {
     return (
-      <>
-        <div>
-          <label htmlFor='image'>Imagem</label>
-          <input
-            id='image'
-            type='text'
-            value={this.state.imagePath}
-            onChange={(e) => this.onChange(e, 'imagePath')}
-          />
-        </div>
-      </>
-    )
+      <div>
+        <label htmlFor='image'>Imagem</label>
+        <input
+          id='image'
+          type='text'
+          value={this.state.imagePath}
+          onChange={(e) => this.onChange(e, 'imagePath')}
+        />
+      </div>
+    );
   }
 
   sinopse() {
@@ -132,7 +128,7 @@ class AddMovie extends React.Component {
         >
         </textarea>
       </div>
-    )
+    );
   }
 
   render() {
@@ -146,7 +142,7 @@ class AddMovie extends React.Component {
         {this.selectBox()}
         <button type='submit' onClick={() => this.onClick()}>Adicionar filme</button>
       </form>
-    )
+    );
   }
 }
 

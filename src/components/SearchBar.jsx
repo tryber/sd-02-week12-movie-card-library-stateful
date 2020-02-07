@@ -8,42 +8,42 @@ const genreOptions = [
 ];
 
 class SearchBar extends Component {
-  searchText(searchText, onSearchTextChange) {
+  searchText() {
     return (
       <div>
         <label htmlFor="search">Inclui o texto</label>
         <input
           id="search"
           type="text"
-          value={searchText}
-          onChange={onSearchTextChange}
+          value={this.props.searchText}
+          onChange={this.props.onSearchTextChange}
         />
       </div>
-    )
+    );
   }
 
-  bookmarked(bookmarkedOnly, onBookmarkedChange,) {
+  bookmarked() {
     return (
       <div>
         <label htmlFor="bookmarked">Mostrar somente favoritos</label>
         <input
           id="bookmarked"
           type="checkbox"
-          checked={bookmarkedOnly}
-          onChange={onBookmarkedChange}
+          checked={this.props.bookmarkedOnly}
+          onChange={this.props.onBookmarkedChange}
         />
       </div>
-    )
+    );
   }
 
-  genre(selectedGenre, onSelectedGenreChange) {
+  genre() {
     return (
       <div>
         <label htmlFor="genre">Filtrar por gênero</label>
         <select
           id="genre"
-          value={selectedGenre}
-          onChange={onSelectedGenreChange}
+          value={this.props.selectedGenre}
+          onChange={this.props.onSelectedGenreChange}
         >
         {genreOptions.map((option) => (
           <option key={option.value} value={option.value}>
@@ -52,19 +52,15 @@ class SearchBar extends Component {
         ))}
         </select>
       </div>
-    )
+    );
   }
 
   render() {
-    const {
-      searchText, onSearchTextChange, bookmarkedOnly,
-      onBookmarkedChange, selectedGenre, onSelectedGenreChange,
-    } = this.props;
     return (
       <form>
-        {this.searchText(searchText, onSearchTextChange)}
-        {this.bookmarked(bookmarkedOnly, onBookmarkedChange)}
-        {this.genre(selectedGenre, onSelectedGenreChange)}
+        {this.searchText()}
+        {this.bookmarked()}
+        {this.genre()}
       </form>
     );
   }
