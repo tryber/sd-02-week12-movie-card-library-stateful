@@ -22,6 +22,7 @@ class AddMovie extends React.Component {
     super(props);
     this.state = { ...initialState };
     this.onChange = this.onChange.bind(this);
+    this.submithandler = this.submithandler.bind(this);
   }
 
   onChange(e, name) {
@@ -37,7 +38,7 @@ class AddMovie extends React.Component {
     this.setState({ ...initialState });
   }
 
-  static submithandler(e) {
+  submithandler(e) {
     e.preventDefault();
   }
 
@@ -132,7 +133,7 @@ class AddMovie extends React.Component {
 
   render() {
     return (
-      <form onSubmit={AddMovie.submithandler}>
+      <form onSubmit={this.submithandler}>
         {this.title()}
         {this.subtitle()}
         {this.image()}
