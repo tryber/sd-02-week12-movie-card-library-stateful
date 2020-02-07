@@ -14,15 +14,13 @@ const initialState = {
   imagePath: '',
   storyline: '',
   rating: 0,
-  genre: 'action'
-}
+  genre: 'action',
+};
 
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ...initialState
-    }
+    this.state = { ...initialState, };
     this.onChange = this.onChange.bind(this);
   }
 
@@ -31,32 +29,28 @@ class AddMovie extends React.Component {
     if (name === 'rating') {
       value = parseFloat(e.target.value, 10);
     }
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value, });
+  }
+
+  onClick() {
+    this.props.onClick({ ...this.state });
+    this.setState({ ...initialState, });
   }
 
   submithandler(e) {
     e.preventDefault();
   }
 
-  onClick() {
-    this.props.onClick({...this.state});
-    this.setState({
-      ...initialState
-    });
-  }
-
   selectBox() {
     return (
       <div>
-        <label htmlFor='genre'>Gênero</label>
+        <label htmlFor="genre">Gênero</label>
         <select
-          id='genre'
+          id="genre"
           value={this.state.genre}
           onChange={(e) => this.onChange(e, 'genre')}
         >
-          {genreOptions.map(option => (
+          {genreOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.text}
             </option>))}
@@ -68,10 +62,10 @@ class AddMovie extends React.Component {
   rating() {
     return (
       <div>
-        <label htmlFor='rating'>Avaliação</label>
+        <label htmlFor="rating">Avaliação</label>
         <input
-          id='rating'
-          type='number'
+          id="rating"
+          type="number"
           value={this.state.rating}
           onChange={(e) => this.onChange(e, 'rating')}
         />
@@ -82,11 +76,11 @@ class AddMovie extends React.Component {
   title() {
     return (
       <div>
-        <label htmlFor='title'>Título</label>
+        <label htmlFor="title">Título</label>
         <input
-          id='title'
-          type='text'
-          name='title'
+          id="title"
+          type="text"
+          name="title"
           value={this.state.title}
           onChange={(e) => this.onChange(e, 'title')}
         />
@@ -97,8 +91,14 @@ class AddMovie extends React.Component {
   subtitle() {
     return (
       <div>
-        <label htmlFor='subtitle'>Subtítulo</label>
-        <input id='subtitle' type='text' name='subtitle' value={this.state.subtitle} onChange={(e) => this.onChange(e, 'subtitle')} />
+        <label htmlFor="subtitle">Subtítulo</label>
+        <input
+          id="subtitle"
+          type="text"
+          name="subtitle"
+          value={this.state.subtitle}
+          onChange={(e) => this.onChange(e, 'subtitle')}
+        />
       </div>
     );
   }
@@ -106,10 +106,10 @@ class AddMovie extends React.Component {
   image() {
     return (
       <div>
-        <label htmlFor='image'>Imagem</label>
+        <label htmlFor="image">Imagem</label>
         <input
-          id='image'
-          type='text'
+          id="image"
+          type="text"
           value={this.state.imagePath}
           onChange={(e) => this.onChange(e, 'imagePath')}
         />
@@ -120,13 +120,12 @@ class AddMovie extends React.Component {
   sinopse() {
     return (
       <div>
-        <label htmlFor='sinopse'>Sinopse</label>
+        <label htmlFor="sinopse">Sinopse</label>
         <textarea
-          id='sinopse'
+          id="sinopse"
           value={this.state.storyline}
           onChange={(e) => this.onChange(e, 'storyline')}
-        >
-        </textarea>
+        />
       </div>
     );
   }

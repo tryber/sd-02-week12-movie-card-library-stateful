@@ -45,11 +45,11 @@ class SearchBar extends Component {
           value={this.props.selectedGenre}
           onChange={this.props.onSelectedGenreChange}
         >
-        {genreOptions.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.text}
-          </option>
-        ))}
+          {genreOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.text}
+            </option>
+          ))}
         </select>
       </div>
     );
