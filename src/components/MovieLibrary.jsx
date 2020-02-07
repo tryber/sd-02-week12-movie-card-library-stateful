@@ -21,33 +21,33 @@ class MovieLibrary extends Component {
   updateSearchText(event) {
     this.setState(
       { searchText: event.target.value },
-    )
+    );
   }
 
   updateBookmarkedOnly(event) {
     this.setState(
       { bookmarkedOnly: event.target.checked },
-    )
+    );
   }
 
   updateSelectedGenre(event) {
     this.setState(
       { selectedGenre: event.target.value },
-    )
+    );
   }
 
   filterMovies(movies) {
-    const textFilteredMovies = movies.filter(movie => movie.title.includes(this.state.searchText)
+    const textFilteredMovies = movies.filter((movie) => movie.title.includes(this.state.searchText)
       || movie.subtitle.includes(this.state.searchText)
       || movie.storyline.includes(this.state.searchText));
     const bookmarkedFilteredMovies = this.state.bookmarkedOnly
-      ? movies.filter(movie => movie.bookmarked) : movies;
+      ? movies.filter((movie) => movie.bookmarked) : movies;
     const genreFilteredMovies = this.state.selectedGenre !== ''
-      ? movies.filter(movie => movie.genre === this.state.selectedGenre) : movies;
+      ? movies.filter((movie) => movie.genre === this.state.selectedGenre) : movies;
 
-    return movies.filter(movie => textFilteredMovies.includes(movie)
+    return movies.filter((movie) => textFilteredMovies.includes(movie)
       && bookmarkedFilteredMovies.includes(movie)
-      && genreFilteredMovies.includes(movie)
+      && genreFilteredMovies.includes(movie),
     );
   }
 
