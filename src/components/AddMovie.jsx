@@ -20,7 +20,7 @@ const initialState = {
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...initialState, };
+    this.state = { ...initialState };
     this.onChange = this.onChange.bind(this);
   }
 
@@ -29,12 +29,12 @@ class AddMovie extends React.Component {
     if (name === 'rating') {
       value = parseFloat(e.target.value, 10);
     }
-    this.setState({ [name]: value, });
+    this.setState({ [name]: value });
   }
 
   onClick() {
     this.props.onClick({ ...this.state });
-    this.setState({ ...initialState, });
+    this.setState({ ...initialState });
   }
 
   submithandler(e) {
@@ -139,7 +139,7 @@ class AddMovie extends React.Component {
         {this.sinopse()}
         {this.rating()}
         {this.selectBox()}
-        <button type='submit' onClick={() => this.onClick()}>Adicionar filme</button>
+        <button type="submit" onClick={() => this.onClick()}>Adicionar filme</button>
       </form>
     );
   }
