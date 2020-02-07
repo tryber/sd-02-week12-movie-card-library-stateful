@@ -39,7 +39,7 @@ class MovieLibrary extends Component {
     const array = [...this.state.movies, newState];
     this.setState({
       ...this.state,
-      movies: [...array]
+      movies: [...array],
     });
   }
 
