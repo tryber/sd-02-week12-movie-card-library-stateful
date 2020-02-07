@@ -78,31 +78,69 @@ class AddMovie extends React.Component {
     )
   }
 
+  title() {
+    return (
+      <>
+        <div>
+          <label htmlFor='title'>Título</label>
+          <input
+            id='title'
+            type='text'
+            name='title'
+            value={this.state.title}
+            onChange={(e) => this.onChange(e, 'title')}
+          />
+        </div>
+      </>
+    )
+  }
 
+  subtitle() {
+    return (
+      <div>
+        <label htmlFor='subtitle'>Subtítulo</label>
+        <input id='subtitle' type='text' name='subtitle' value={this.state.subtitle} onChange={(e) => this.onChange(e, 'subtitle')} />
+      </div>
+    )
+  }
+
+  image() {
+    return (
+      <>
+        <div>
+          <label htmlFor='image'>Imagem</label>
+          <input
+            id='image'
+            type='text'
+            value={this.state.imagePath}
+            onChange={(e) => this.onChange(e, 'imagePath')}
+          />
+        </div>
+      </>
+    )
+  }
+
+  sinopse() {
+    return (
+      <div>
+        <label htmlFor='sinopse'>Sinopse</label>
+        <textarea
+          id='sinopse'
+          value={this.state.storyline}
+          onChange={(e) => this.onChange(e, 'storyline')}
+        >
+        </textarea>
+      </div>
+    )
+  }
 
   render() {
     return (
       <form onSubmit={this.submithandler}>
-        <div>
-          <label htmlFor='title'>Título</label>
-          <input id='title' type='text' name='title' value={this.state.title} onChange={(e) => this.onChange(e, 'title')} />
-        </div>
-        <div>
-          <label htmlFor='subtitle'>Subtítulo</label>
-          <input id='subtitle' type='text' name='subtitle' value={this.state.subtitle} onChange={(e) => this.onChange(e, 'subtitle')} />
-        </div>
-        <div>
-          <label htmlFor='image'>Imagem</label>
-          <input id='image' type='text' value={this.state.imagePath} onChange={(e) => this.onChange(e, 'imagePath')} />
-        </div>
-        <div>
-          <label htmlFor='sinopse'>Sinopse</label>
-          <textarea id='sinopse' value={this.state.storyline} onChange={(e) => this.onChange(e, 'storyline')} ></textarea>
-        </div>
-        <div>
-          <label htmlFor='rating'>Avaliação</label>
-          <input id='rating' type='number' value={this.state.rating} onChange={(e) => this.onChange(e, 'rating')} />
-        </div>
+        {this.title()}
+        {this.subtitle()}
+        {this.image()}
+        {this.sinopse()}
         {this.rating()}
         {this.selectBox()}
         <button type='submit' onClick={this.onClick}>Adicionar filme</button>

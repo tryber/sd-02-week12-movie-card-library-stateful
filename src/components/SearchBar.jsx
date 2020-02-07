@@ -8,6 +8,54 @@ const genreOptions = [
 ];
 
 class SearchBar extends Component {
+
+  searchText(searchText, onSearchTextChange) {
+    return (
+      <>
+        <label htmlFor="search">Inclui o texto</label>
+        <input
+          id="search"
+          type="text"
+          value={searchText}
+          onChange={onSearchTextChange}
+        />
+      </>
+    )
+  }
+
+  bookmarked(bookmarkedOnly, onBookmarkedChange,) {
+    return (
+      <>
+        <label htmlFor="bookmarked">Mostrar somente favoritos</label>
+        <input
+          id="bookmarked"
+          type="checkbox"
+          checked={bookmarkedOnly}
+          onChange={onBookmarkedChange}
+        />
+      </>
+    )
+  }
+
+  genre(selectedGenre, onSelectedGenreChange) {
+    return (
+      <>
+        <label htmlFor="genre">Filtrar por gênero</label>
+        <select
+          id="genre"
+          value={selectedGenre}
+          onChange={onSelectedGenreChange}
+        >
+        {genreOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.text}
+          </option>
+        ))}
+        </select>
+      </>
+    )
+  }
+
   render() {
     const {
       searchText, onSearchTextChange, bookmarkedOnly,
@@ -15,23 +63,9 @@ class SearchBar extends Component {
     } = this.props;
     return (
       <form>
-        <label htmlFor="search">Inclui o texto</label>
-        <input id="search" type="text"
-          value={searchText}
-          onChange={onSearchTextChange} />
-        <label htmlFor="bookmarked">Mostrar somente favoritos</label>
-        <input id="bookmarked" type="checkbox"
-          checked={bookmarkedOnly}
-          onChange={onBookmarkedChange} />
-        <label htmlFor="genre">Filtrar por gênero</label>
-        <select id="genre" value={selectedGenre}
-          onChange={onSelectedGenreChange}>
-          {genreOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.text}
-            </option>
-          ))}
-        </select>
+        {this.searchText(searchText, onSearchTextChange)}
+        {this.bookmarked(bookmarkedOnly, onBookmarkedChange)}
+        {this.genre(selectedGenre, onSelectedGenreChange)}
       </form>
     );
   }
