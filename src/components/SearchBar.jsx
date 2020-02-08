@@ -10,10 +10,10 @@ class SearchBar extends Component {
         <input type = "checkbox" checked = {this.props.bookmarkedOnly} onChange={this.props.onBookmarkedChange}/>
         <label>Filtrar por gênero</label>
         <select value = {this.props.selectedGenre} onChange={this.props.onSelectedGenreChange}>
+          <option value="">Todos</option>
           <option value="action">Ação</option>
           <option value="comedy">Comédia</option>
-          <option value="thriller">Thriller</option>
-          <option value="terror">Terror</option>
+          <option value="thriller">Suspense</option>
         </select>
       </form>
     )
