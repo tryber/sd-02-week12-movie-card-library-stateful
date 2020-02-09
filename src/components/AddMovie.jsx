@@ -20,7 +20,10 @@ class AddMovie extends React.Component {
   static submithandler(e) {
     e.preventDefault();
   }
+
+
   
+
   constructor(props) {
     super(props);
     this.state = { ...initialState };
