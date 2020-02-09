@@ -19,7 +19,7 @@ class MovieLibrary extends Component {
     this.filtraFilmes = this.filtraFilmes.bind(this);
   }
 
-  procuraTexto = () => {
+  procuraTexto() {
     this.setState(() => {
       return this.state.searchText
     });

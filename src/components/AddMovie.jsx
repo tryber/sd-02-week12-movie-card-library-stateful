@@ -136,7 +136,8 @@ class AddMovie extends React.Component {
           type="radio"
           name="genre"
           value={this.state.genre}
-          onChange={(event) => this.actualGenre(event)} >
+          onChange={(event) => this.actualGenre(event)}
+        >
           <option value="action">Ação</option>
           <option value="comedy">Comédia</option>
           <option value="thriller">Suspense</option>
