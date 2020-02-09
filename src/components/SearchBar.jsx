@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
+
   render() {
     return (
       <div>
@@ -28,7 +29,7 @@ class SearchBar extends Component {
                 <option value="">Todos</option>
                 <option value="action">Ação</option>
                 <option value="comedy">Comédia</option>
-                <option value="thriller">Suspense</option> 
+                <option value="thriller">Suspense</option>
             </select>
           </label>
         </form>

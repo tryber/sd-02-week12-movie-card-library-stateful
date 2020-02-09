@@ -12,29 +12,79 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: this.props.movies,
     }
+    this.updateSearchText = this.updateSearchText.bind(this);
+    this.updateFavorite = this.updateFavorite.bind(this);
+    this.updateGenre = this.updateGenre.bind(this);
+    this.criaFilme = this.criaFilme.bind(this);
+    this.filtraFilmes = this.filtraFilmes.bind(this);
   }
 
 procuraTexto = () => {
-  this.setState((state) => {
-    return state
+  this.setState(() => {
+    return this.state.searchText
   })
 }
 
-adicionaFilme(callback){
-  console.log(callback)
+updateSearchText(event) {
+  const { value } = event.target;
+  this.setState({
+    searchText: value,
+  });
 }
+
+onClick(callback){
+  return callback
+}
+
+updateFavorite(event) {
+  const { checked } = event.target;
+  this.setState({
+    bookmarkedOnly: checked
+  });
+}
+
+updateGenre(e) {
+  const { value } = e.target;
+  this.setState(() => ({ selectedGenre: value }));
+}
+
+filtraFilmes(valor) {
+  const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+  let filmes = valor;
+  if (bookmarkedOnly) filmes = filmes.filter(filme => filme.bookmarked === true);
+  if (searchText.length > 0) {
+   filmes = filmes.filter(filme => {
+    filmes = filme.title.toLowerCase().includes(searchText.toLowerCase()) ||
+    filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
+    filme.storyline.toLowerCase().includes(searchText.toLowerCase());
+    return filmes;
+   });
+  }
+  if (selectedGenre.length > 0 ) {
+    filmes = filmes.filter(filme => filme.genre === selectedGenre);
+    return filmes;
+  }
+  return filmes;
+}
+
+  criaFilme(value) {
+   this.setState((state) => ({ movies: state.movies.concat(value) }));
+  }
 
   render() {
     return (
       <div>
         <h2>My awesome Movie Library</h2>
         <SearchBar
-          searchText={this.state.procuraTexto}
+          searchText={this.state.searchText}
+          onSearchTextChange={(event) => this.updateSearchText(event)}
           bookmarkedOnly={this.state.bookmarkedOnly}
+          onBookmarkedChange={(event) => this.updateFavorite(event)}
           selectedGenre={this.state.selectedGenre}
+          onSelectedGenreChange={(event) => this.updateGenre(event)}
         />
-        <MovieList movies={this.props.movies} />
-        <AddMovie onClick={this.adicionaFilme}/>
+        <MovieList movies={this.filtraFilmes(this.state.movies)}/>
+        <AddMovie onClick={this.criaFilme} />
       </div>
     );
   }
