@@ -21,9 +21,6 @@ class AddMovie extends React.Component {
     e.preventDefault();
   }
 
-
-  
-
   constructor(props) {
     super(props);
     this.state = { ...initialState };
