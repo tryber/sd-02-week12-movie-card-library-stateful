@@ -13,7 +13,6 @@ class AddMovie extends React.Component {
     }
     this.actualTitle = this.actualTitle.bind(this);
     this.currentState = this.currentState.bind(this);
-
   }
 
   actualTitle(event) {
@@ -73,8 +72,16 @@ class AddMovie extends React.Component {
     });
   }
 
-  currentState(callback) {
-    console.log(callback)
+  currentState(onClick) {
+    onClick(this.state);
+    this.setState(() => ({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    }));
   }
 
   render() {
@@ -133,7 +140,7 @@ class AddMovie extends React.Component {
 
           <br></br>
 
-          <button type="button" onClick={() => this.currentState(this.state)}>
+          <button type="button" onClick={() => this.currentState(this.props.onClick)}>
           Adicionar filme</button>
 
         </form>
