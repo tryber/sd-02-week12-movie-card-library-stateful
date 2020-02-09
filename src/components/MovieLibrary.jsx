@@ -47,8 +47,8 @@ class MovieLibrary extends Component {
         filmes = filme.title.toLowerCase().includes(searchText.toLowerCase()) ||
         filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
         filme.storyline.toLowerCase().includes(searchText.toLowerCase());
-      return filmes;
-    });
+        return filmes;
+      });
     }
     if (selectedGenre.length > 0) {
       filmes = filmes.filter((filme) => filme.genre === selectedGenre);
