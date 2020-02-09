@@ -2,7 +2,7 @@ import React from 'react';
 
 class AddMovie extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       subtitle: '',
       title: '',
@@ -10,78 +10,64 @@ class AddMovie extends React.Component {
       storyline: '',
       rating: 0,
       genre: 'action',
-    }
+    };
     this.actualTitle = this.actualTitle.bind(this);
     this.currentState = this.currentState.bind(this);
   }
 
   actualTitle(event) {
-    const { value } = event.target
-    this.setState(() => {
-      return ({
+    const { value } = event.target;
+    this.setState({
         title: value,
-      });
     });
   }
 
 
   actualSubTitle(event) {
-    const { value } = event.target
-    this.setState(() => {
-      return ({
+    const { value } = event.target;
+    this.setState({
         subtitle: value,
-      });
     });
-
   }
 
   actualImagePath(event) {
-    const { value } = event.target
-    this.setState(() => {
-      return ({
+    const { value } = event.target;
+    this.setState({
         imagePath: value,
-      });
     });
   }
 
   actualStoryLine(event) {
-    const { value } = event.target
-    this.setState(() => {
-      return ({
+    const { value } = event.target;
+    this.setState({
         storyline: value,
-      });
     });
-
   }
 
   actualRating(event) {
-    const { value } = event.target
-    this.setState(() => {
-      return ({
+    const { value } = event.target;
+    this.setState({
         rating: parseFloat(value),
-      });
     });
   }
 
   actualGenre(event) {
-    const { value } = event.target
-    this.setState(() => {
-      return ({
+    const { value } = event.target;
+    this.setState({
         genre: value,
-      });
     });
   }
 
   currentState(onClick) {
     onClick(this.state);
-    this.setState(() => ({
+    this.setState({
       subtitle: '',
       title: '',
       imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
-    }));
+    });
   }
 
   labelTitle() {

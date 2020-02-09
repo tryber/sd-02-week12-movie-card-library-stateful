@@ -36,14 +36,15 @@ class SearchBar extends Component {
         <select
           value={this.props.selectedGenre}
           id="genero"
-          onChange={this.props.onSelectedGenreChange}>
+          onChange={this.props.onSelectedGenreChange}
+        >
           <option value="">Todos</option>
           <option value="action">Ação</option>
           <option value="comedy">Comédia</option>
           <option value="thriller">Suspense</option>
         </select>
       </label>
-     );
+    );
   }
 
   render() {
