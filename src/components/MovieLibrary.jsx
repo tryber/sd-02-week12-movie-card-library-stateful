@@ -19,53 +19,49 @@ class MovieLibrary extends Component {
     this.filtraFilmes = this.filtraFilmes.bind(this);
   }
 
-procuraTexto = () => {
-  this.setState(() => {
-    return this.state.searchText
-  })
-}
-
-updateSearchText(event) {
-  const { value } = event.target;
-  this.setState({
-    searchText: value,
-  });
-}
-
-onClick(callback){
-  return callback
-}
-
-updateFavorite(event) {
-  const { checked } = event.target;
-  this.setState({
-    bookmarkedOnly: checked
-  });
-}
-
-updateGenre(e) {
-  const { value } = e.target;
-  this.setState(() => ({ selectedGenre: value }));
-}
-
-filtraFilmes(valor) {
-  const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-  let filmes = valor;
-  if (bookmarkedOnly) filmes = filmes.filter(filme => filme.bookmarked === true);
-  if (searchText.length > 0) {
-   filmes = filmes.filter(filme => {
-    filmes = filme.title.toLowerCase().includes(searchText.toLowerCase()) ||
-    filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
-    filme.storyline.toLowerCase().includes(searchText.toLowerCase());
-    return filmes;
-   });
+  procuraTexto = () => {
+    this.setState(() => {
+      return this.state.searchText
+    });
   }
-  if (selectedGenre.length > 0 ) {
-    filmes = filmes.filter(filme => filme.genre === selectedGenre);
+
+  updateSearchText(event) {
+    const { value } = event.target;
+    this.setState({
+      searchText: value,
+    });
+  }
+
+  updateFavorite(event) {
+    const { checked } = event.target;
+    this.setState({
+      bookmarkedOnly: checked
+    });
+  }
+
+  updateGenre(e) {
+    const { value } = e.target;
+    this.setState(() => ({ selectedGenre: value }));
+  }
+
+  filtraFilmes(valor) {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    let filmes = valor;
+    if (bookmarkedOnly) filmes = filmes.filter(filme => filme.bookmarked === true);
+    if (searchText.length > 0) {
+    filmes = filmes.filter(filme => {
+      filmes = filme.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
+      filme.storyline.toLowerCase().includes(searchText.toLowerCase());
+      return filmes;
+    });
+    }
+    if (selectedGenre.length > 0) {
+      filmes = filmes.filter(filme => filme.genre === selectedGenre);
+      return filmes;
+    }
     return filmes;
   }
-  return filmes;
-}
 
   criaFilme(value) {
    this.setState((state) => ({ movies: state.movies.concat(value) }));
@@ -83,7 +79,7 @@ filtraFilmes(valor) {
           selectedGenre={this.state.selectedGenre}
           onSelectedGenreChange={(event) => this.updateGenre(event)}
         />
-        <MovieList movies={this.filtraFilmes(this.state.movies)}/>
+        <MovieList movies={this.filtraFilmes(this.state.movies)} />
         <AddMovie onClick={this.criaFilme} />
       </div>
     );

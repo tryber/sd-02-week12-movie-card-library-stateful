@@ -84,68 +84,114 @@ class AddMovie extends React.Component {
     }));
   }
 
+  labelTitle() {
+    return (
+      <label htmlFor="title">
+        Título
+        <input
+          type="text"
+          name="title"
+          value={this.state.title}
+          onChange={(event) => this.actualTitle(event)}
+        />
+      </label>
+    );
+  }
+
+  labelSubTitle() {
+    return (
+      <label htmlFor="subtitle">
+        Subtítulo
+        <input
+          type="text"
+          name="subtitle"
+          value={this.state.subtitle}
+          onChange={(event) => this.actualSubTitle(event)}
+        />
+      </label>
+    );
+  }
+
+  labelImage() {
+    return (
+      <label htmlFor="imagePath">
+        Imagem
+        <input
+          type="text"
+          name="imagePath"
+          value={this.state.imagePath}
+          onChange={(event) => this.actualImagePath(event)}
+        />
+      </label>
+    );
+  }
+
+  labelSinopse() {
+    return (
+      <label htmlFor="Sinopse">
+        Sinopse
+        <textarea
+          type="text"
+          name="Sinopse"
+          value={this.state.storyline}
+          onChange={(event) => this.actualStoryLine(event)}
+        />
+      </label>
+    );
+  }
+
+  labelRating() {
+    return (
+      <label htmlFor="rating">
+        Avaliação
+        <input
+          type="number"
+          name="rating"
+          value={this.state.rating}
+          onChange={(event) => this.actualRating(event)}
+        />
+      </label>
+    );
+  }
+
+  labelGenre() {
+    return (
+      <label htmlFor="genre">
+        Gênero
+        <select
+          type="radio"
+          name="genre"
+          value={this.state.genre}
+          onChange={(event) => this.actualGenre(event)} >
+          <option value="action">Ação</option>
+          <option value="comedy">Comédia</option>
+          <option value="thriller">Suspense</option>
+        </select>
+      </label>
+    );
+  }
+
   render() {
     return (
       <div>
         <form>
-
-          <label htmlFor="title">
-            Título
-            <input type="text" name="title" value={this.state.title} onChange={(event) => this.actualTitle(event)}>
-            </input>
-          </label>
-
-          <br></br>
-
-          <label htmlFor="subtitle">
-            Subtítulo
-            <input type="text" name="subtitle" value={this.state.subtitle} onChange={(event) => this.actualSubTitle(event)}>
-            </input>
-          </label>
-
-          <br></br>
-
-          <label htmlFor="imagePath">
-            Imagem
-            <input type="text" name="imagePath" value={this.state.imagePath} onChange={(event) => this.actualImagePath(event)}>
-            </input>
-          </label>
-
-          <br></br>
-
-          <label htmlFor="Sinopse">
-            Sinopse
-            <textarea type="text" name="Sinopse" value={this.state.storyline} onChange={(event) => this.actualStoryLine(event)}>
-            </textarea>
-          </label>
-
-          <br></br>
-
-          <label htmlFor="rating">
-            Avaliação
-            <input type="number" name="rating" value={this.state.rating} onChange={(event) => this.actualRating(event)}>
-            </input>
-          </label>
-
-          <br></br>
-
-          <label htmlFor="genre">
-            Gênero
-            <select type="radio" name="genre" value={this.state.genre} onChange={(event) => this.actualGenre(event)}>
-              <option value="action">Ação</option>
-              <option value="comedy">Comédia</option>
-              <option value="thriller">Suspense</option>
-            </select>
-          </label>
-
-          <br></br>
-
+          {this.labelTitle()}
+          <br />
+          {this.labelSubTitle()}
+          <br />
+          {this.labelImage()}
+          <br />
+          {this.labelSinopse()}
+          <br />
+          {this.labelRating()}
+          <br />
+          {this.labelGenre()}
+          <br />
           <button type="button" onClick={() => this.currentState(this.props.onClick)}>
           Adicionar filme</button>
-
         </form>
       </div>
-    )
+    );
   }
 }
 
