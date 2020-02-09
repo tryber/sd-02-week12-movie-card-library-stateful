@@ -20,7 +20,7 @@ class MovieLibrary extends Component {
   }
 
   procuraTexto() {
-    this.setState( this.state.searchText );
+    this.setState(this.state.searchText);
   }
 
   updateSearchText(event) {
@@ -43,10 +43,10 @@ class MovieLibrary extends Component {
     let filmes = valor;
     if (bookmarkedOnly) filmes = filmes.filter((filme) => filme.bookmarked === true);
     if (searchText.length > 0) {
-    filmes = filmes.filter((filme) => {
-      filmes = filme.title.toLowerCase().includes(searchText.toLowerCase()) ||
-      filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
-      filme.storyline.toLowerCase().includes(searchText.toLowerCase());
+      filmes = filmes.filter((filme) => {
+        filmes = filme.title.toLowerCase().includes(searchText.toLowerCase()) ||
+        filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) ||
+        filme.storyline.toLowerCase().includes(searchText.toLowerCase());
       return filmes;
     });
     }
@@ -58,7 +58,7 @@ class MovieLibrary extends Component {
   }
 
   criaFilme(value) {
-   this.setState((state) => ({ movies: state.movies.concat(value) }));
+    this.setState((state) => ({ movies: state.movies.concat(value) }));
   }
 
   render() {
