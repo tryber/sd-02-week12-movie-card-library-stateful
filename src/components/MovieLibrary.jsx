@@ -53,7 +53,12 @@ class MovieLibrary extends Component {
 
   addMovie(newMovie) {
     this.setState(
-      { movies: [...this.state.movies, newMovie] },
+      {
+        searchText: '',
+        bookmarkedOnly: false,
+        selectedGenre: '',
+        movies: [...this.state.movies, newMovie],
+      }
     );
   }
 

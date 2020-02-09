@@ -132,7 +132,7 @@ class AddMovie extends React.Component {
 
   buttonReset() {
     return (
-      <button onClick={this.resetAddMovie}>
+      <button type="button" onClick={this.resetAddMovie}>
         Adicionar filme
       </button>
     );
