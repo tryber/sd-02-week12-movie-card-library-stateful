@@ -17,45 +17,33 @@ class AddMovie extends React.Component {
 
   actualTitle(event) {
     const { value } = event.target;
-    this.setState({
-        title: value,
-    });
+    this.setState({ title: value });
   }
 
 
   actualSubTitle(event) {
     const { value } = event.target;
-    this.setState({
-        subtitle: value,
-    });
+    this.setState({ subtitle: value });
   }
 
   actualImagePath(event) {
     const { value } = event.target;
-    this.setState({
-        imagePath: value,
-    });
+    this.setState({ imagePath: value });
   }
 
   actualStoryLine(event) {
     const { value } = event.target;
-    this.setState({
-        storyline: value,
-    });
+    this.setState({ storyline: value });
   }
 
   actualRating(event) {
     const { value } = event.target;
-    this.setState({
-        rating: parseFloat(value),
-    });
+    this.setState({ rating: parseFloat(value) });
   }
 
   actualGenre(event) {
     const { value } = event.target;
-    this.setState({
-        genre: value,
-    });
+    this.setState({ genre: value });
   }
 
   currentState(onClick) {
