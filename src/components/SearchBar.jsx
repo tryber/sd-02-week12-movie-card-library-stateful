@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-  inputText() {
+  inputText(searchText) {
     const { onSearchTextChange } = this.props;
     return (
       <label htmlFor="InputText">
@@ -10,7 +10,7 @@ class SearchBar extends Component {
           type="text"
           id="InputText"
           name="InputText"
-          value={this.props}
+          value={searchText}
           onChange={onSearchTextChange}
         />
       </label>
