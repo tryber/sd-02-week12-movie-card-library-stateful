@@ -13,6 +13,29 @@ class AddMovie extends React.Component {
     };
   }
 
+  onClickAddMovie() {
+    const { onClickAddMovie } = this.props;
+    const {
+      title,
+      subtitle,
+      storyline,
+      imagePath,
+      rating,
+      genre,
+    } = this.state;
+    const newMovie = {
+      title,
+      subtitle,
+      storyline,
+      imagePath,
+      rating,
+      genre,
+    };
+    onClickAddMovie(newMovie);
+    this.resetForm();
+  }
+
+
   resetForm() {
     this.setState({
       title: '',
@@ -32,7 +55,6 @@ class AddMovie extends React.Component {
       storyline,
       rating,
       genre,
-      imagePath,
     } = this.state;
 
     return (
@@ -113,19 +135,7 @@ class AddMovie extends React.Component {
         <button
           id="addButton"
           type="button"
-          onClick={() => {
-            const { onClickAddMovie } = this.props;
-            const newMovie = {
-              title,
-              subtitle,
-              storyline,
-              imagePath,
-              rating,
-              genre,
-            };
-            onClickAddMovie(newMovie);
-            this.resetForm();
-          }}
+          onClick={this.onClickAddMovie}
         >
           Adicionar filme
         </button>
