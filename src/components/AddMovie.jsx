@@ -8,16 +8,15 @@ class AddMovie extends React.Component {
       subtitle: '',
       storyline: '',
       imagePath: '',
-      rating: '0',
+      rating: 0,
       genre: 'action',
     };
 
     this.onClickAddMovie = this.onClickAddMovie.bind(this);
-    this.imageUploadRef = React.createRef();
   }
 
   onClickAddMovie() {
-    const { onClickAddMovie } = this.props;
+    const { onClick } = this.props;
     const {
       title,
       subtitle,
@@ -34,19 +33,18 @@ class AddMovie extends React.Component {
       rating,
       genre,
     };
-    onClickAddMovie(newMovie);
+    onClick(newMovie);
     this.resetForm();
   }
 
 
   resetForm() {
-    this.imageUploadRef.current.value = null;
     this.setState({
       title: '',
       subtitle: '',
       storyline: '',
       imagePath: '',
-      rating: '0',
+      rating: 0,
       genre: 'action',
     });
   }
@@ -71,7 +69,7 @@ class AddMovie extends React.Component {
     const { subtitle } = this.state;
     return (
       <label htmlFor="subtitle">
-        <p>Subitítulo</p>
+        <p>Subtítulo</p>
         <input
           type="text"
           id="subtitle"
@@ -84,16 +82,17 @@ class AddMovie extends React.Component {
   }
 
   renderImageInput() {
+    const { imagePath } = this.state;
     return (
       <label htmlFor="imagem">
         <p>Imagem</p>
         <input
-          type="file"
+          type="text"
           id="image"
           name="image"
-          ref={this.imageUploadRef}
+          value={imagePath}
           onChange={(event) => {
-            this.setState({ imagePath: URL.createObjectURL(event.target.files[0]) });
+            this.setState({ imagePath: event.target.value });
           }}
         />
       </label>
@@ -128,7 +127,7 @@ class AddMovie extends React.Component {
           value={rating}
           min="0"
           max="5"
-          onChange={(event) => this.setState({ rating: event.target.value })}
+          onChange={(event) => this.setState({ rating: Number(event.target.value) })}
         />
       </label>
     );
