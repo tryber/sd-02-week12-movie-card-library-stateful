@@ -12,6 +12,7 @@ class MovieLibrary extends Component {
     this.setSearchedText = this.setSearchedText.bind(this);
     this.setBookMarkedOnly = this.setBookMarkedOnly.bind(this);
     this.setSelectedGenre = this.setSelectedGenre.bind(this);
+    this.onClickAddMovie = this.onClickAddMovie.bind(this);
 
     this.state = {
       searchText: '',
@@ -19,6 +20,11 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies,
     };
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  onClickAddMovie(newMovie) {
+    console.log(newMovie);
   }
 
   setSearchedText(event) {
@@ -75,7 +81,6 @@ class MovieLibrary extends Component {
     return searched;
   }
 
-
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     const filteredMovies = this.filterMovies(movies);
@@ -91,7 +96,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={this.setSelectedGenre}
         />
         <MovieList movies={filteredMovies} />
-        <AddMovie />
+        <AddMovie onClickAddMovie={this.onClickAddMovie} />
       </section>
     );
   }

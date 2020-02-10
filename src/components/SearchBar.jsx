@@ -21,7 +21,12 @@ class SearchBar extends Component {
     const { onBookmarkedChange, bookmarkedOnly } = this.props;
     return (
       <label htmlFor="InputCheck">
-        <input type="checkbox" id="InputCheck" checked={bookmarkedOnly} onChange={onBookmarkedChange} />
+        <input
+          type="checkbox"
+          id="InputCheck"
+          checked={bookmarkedOnly}
+          onChange={onBookmarkedChange}
+        />
         <p>Mostrar somente favoritos</p>
       </label>
     );
