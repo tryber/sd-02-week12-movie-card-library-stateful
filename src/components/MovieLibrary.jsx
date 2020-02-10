@@ -41,11 +41,12 @@ class MovieLibrary extends Component {
   }
 
   filterMovies() {
-    const { bookmarkedOnly, selectedGenre, searchText, movies } = this.state;
-    if (bookmarkedOnly) return movies.filter((el) => el.bookmarked === true);
-    if (selectedGenre) return movies.filter((el) => el.genre === selectedGenre);
+    const { bookmarkedOnly, selectedGenre, searchText } = this.state;
+    let { movies } = this.state;
+    if (bookmarkedOnly) movies = movies.filter((el) => el.bookmarked === true);
+    if (selectedGenre) movies = movies.filter((el) => el.genre === selectedGenre);
     if (searchText) {
-      return movies.filter((el) => el.title.includes(searchText)
+      movies = movies.filter((el) => el.title.includes(searchText)
         || el.subtitle.includes(searchText)
         || el.storyline.includes(searchText));
     }
