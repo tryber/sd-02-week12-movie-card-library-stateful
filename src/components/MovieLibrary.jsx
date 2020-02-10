@@ -61,6 +61,7 @@ class MovieLibrary extends Component {
   render() {
     return (
       <main>
+        <h2>My Awesome Movie Library</h2>
         <SearchBar
           searchText={this.state.searchText}
           bookmarkedOnly={this.state.bookmarkedOnly}

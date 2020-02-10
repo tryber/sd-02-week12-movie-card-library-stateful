@@ -120,12 +120,12 @@ class AddMovie extends React.Component {
     return (
       <div>
         <form>
-          {this.createInput('title', this.changeHandTitle, 'Título')};
-          {this.createInput('subtitle', this.changeHandSubtitle, 'Subtítulo')};
-          {this.createInput('imagePath', this.changeHandImage, 'Imagem')};
-          {this.createTextArea()};
-          {this.createInputRating('rating', this.changeHandRating, 'Avaliação')};
-          {this.createGenreSelect('Gênero')};
+          {this.createInput('title', this.changeHandTitle, 'Título')}<br />
+          {this.createInput('subtitle', this.changeHandSubtitle, 'Subtítulo')}<br />
+          {this.createInput('imagePath', this.changeHandImage, 'Imagem')}<br />
+          {this.createTextArea()}<br />
+          {this.createInputRating('rating', this.changeHandRating, 'Avaliação')}<br />
+          {this.createGenreSelect('Gênero')}<br />
           <button type="button" onClick={() => this.addAndRemoveMovie(onClick)}>
             Adicionar filme
           </button>
