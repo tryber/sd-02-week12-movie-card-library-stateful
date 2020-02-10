@@ -25,7 +25,7 @@ class MovieLibrary extends Component {
   // eslint-disable-next-line class-methods-use-this
   onClickAddMovie(newMovie) {
     const { movies } = this.state;
-    this.setState({movies: [...movies, newMovie]});
+    this.setState({ movies: [...movies, newMovie] });
   }
 
   setSearchedText(event) {

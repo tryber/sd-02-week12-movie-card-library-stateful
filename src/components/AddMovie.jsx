@@ -9,12 +9,32 @@ class AddMovie extends React.Component {
       storyline: '',
       imagePath: '',
       rating: '0',
-      genre: 'action'
+      genre: 'action',
     };
   }
 
+  resetForm() {
+    this.setState({
+      title: '',
+      subtitle: '',
+      storyline: '',
+      imagePath: '',
+      rating: '0',
+      genre: 'action',
+    });
+  }
+
+
   render() {
-    const { title, subtitle, storyline, rating, genre, imagePath } = this.state;
+    const {
+      title,
+      subtitle,
+      storyline,
+      rating,
+      genre,
+      imagePath,
+    } = this.state;
+
     return (
       <form>
         <label htmlFor="title">
@@ -45,7 +65,9 @@ class AddMovie extends React.Component {
             type="file"
             id="image"
             name="image"
-            onChange={(event) => this.setState({ imagePath: event.target.files[0] })}
+            onChange={(event) => {
+              this.setState({ imagePath: URL.createObjectURL(event.target.files[0]) });
+            }}
           />
         </label>
 
@@ -102,6 +124,7 @@ class AddMovie extends React.Component {
               genre,
             };
             onClickAddMovie(newMovie);
+            this.resetForm();
           }}
         >
           Adicionar filme
