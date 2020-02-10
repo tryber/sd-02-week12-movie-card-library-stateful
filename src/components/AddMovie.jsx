@@ -11,6 +11,9 @@ class AddMovie extends React.Component {
       rating: '0',
       genre: 'action',
     };
+
+    this.onClickAddMovie = this.onClickAddMovie.bind(this);
+    this.imageUploadRef = React.createRef();
   }
 
   onClickAddMovie() {
@@ -37,6 +40,7 @@ class AddMovie extends React.Component {
 
 
   resetForm() {
+    this.imageUploadRef.current.value = null;
     this.setState({
       title: '',
       subtitle: '',
@@ -47,91 +51,117 @@ class AddMovie extends React.Component {
     });
   }
 
+  renderTitleInput() {
+    const { title } = this.state;
+    return (
+      <label htmlFor="title">
+        <p>Título</p>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={title}
+          onChange={(event) => this.setState({ title: event.target.value })}
+        />
+      </label>
+    );
+  }
+
+  renderSubtitleInput() {
+    const { subtitle } = this.state;
+    return (
+      <label htmlFor="subtitle">
+        <p>Subitítulo</p>
+        <input
+          type="text"
+          id="subtitle"
+          name="subtitle"
+          value={subtitle}
+          onChange={(event) => this.setState({ subtitle: event.target.value })}
+        />
+      </label>
+    );
+  }
+
+  renderImageInput() {
+    return (
+      <label htmlFor="imagem">
+        <p>Imagem</p>
+        <input
+          type="file"
+          id="image"
+          name="image"
+          ref={this.imageUploadRef}
+          onChange={(event) => {
+            this.setState({ imagePath: URL.createObjectURL(event.target.files[0]) });
+          }}
+        />
+      </label>
+    );
+  }
+
+  renderStorylineInput() {
+    const { storyline } = this.state;
+    return (
+      <label htmlFor="storyline">
+        <p>Sinopse</p>
+        <textarea
+          type="text"
+          id="storyline"
+          name="storyline"
+          value={storyline}
+          onChange={(event) => this.setState({ storyline: event.target.value })}
+        />
+      </label>
+    );
+  }
+
+  renderRatingInput() {
+    const { rating } = this.state;
+    return (
+      <label htmlFor="rating">
+        <p>Avaliação</p>
+        <input
+          type="number"
+          id="rating"
+          name="rating"
+          value={rating}
+          min="0"
+          max="5"
+          onChange={(event) => this.setState({ rating: event.target.value })}
+        />
+      </label>
+    );
+  }
+
+  renderGenreInput() {
+    const { genre } = this.state;
+    return (
+      <label htmlFor="genre">
+        <p>Gênero</p>
+        <select
+          name="genre"
+          id="genre"
+          value={genre}
+          onChange={(event) => this.setState({ genre: event.target.value })}
+        >
+          <option value="action">Ação</option>
+          <option value="comedy">Comédia</option>
+          <option value="thriller">Suspense</option>
+        </select>
+      </label>
+    );
+  }
 
   render() {
-    const {
-      title,
-      subtitle,
-      storyline,
-      rating,
-      genre,
-    } = this.state;
-
     return (
       <form>
-        <label htmlFor="title">
-          <p>Título</p>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={title}
-            onChange={(event) => this.setState({ title: event.target.value })}
-          />
-        </label>
-
-        <label htmlFor="subtitle">
-          <p>Subitítulo</p>
-          <input
-            type="text"
-            id="subtitle"
-            name="subtitle"
-            value={subtitle}
-            onChange={(event) => this.setState({ subtitle: event.target.value })}
-          />
-        </label>
-
-        <label htmlFor="imagem">
-          <p>Imagem</p>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            onChange={(event) => {
-              this.setState({ imagePath: URL.createObjectURL(event.target.files[0]) });
-            }}
-          />
-        </label>
-
-
-        <label htmlFor="storyline">
-          <p>Sinopse</p>
-          <textarea
-            type="text"
-            id="storyline"
-            name="storyline"
-            value={storyline}
-            onChange={(event) => this.setState({ storyline: event.target.value })}
-          />
-        </label>
-
-        <label htmlFor="rating">
-          <p>Avaliação</p>
-          <input
-            type="number"
-            id="rating"
-            name="rating"
-            value={rating}
-            min="0"
-            max="5"
-            onChange={(event) => this.setState({ rating: event.target.value })}
-          />
-        </label>
-
-        <label htmlFor="genre">
-          <p>Gênero</p>
-          <select
-            name="genre"
-            id="genre"
-            value={genre}
-            onChange={(event) => this.setState({ genre: event.target.value })}
-          >
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-          </select>
-        </label>
-
+        {this.renderTitleInput()}
+        {this.renderSubtitleInput()}
+        {this.renderImageInput()}
+        {this.renderStorylineInput()}
+        {this.renderRatingInput()}
+        {this.renderGenreInput()}
         <button
           id="addButton"
           type="button"
