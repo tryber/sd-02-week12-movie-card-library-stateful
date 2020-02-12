@@ -11,7 +11,7 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: this.props.movies,
+      movies: props.movies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
@@ -60,7 +60,7 @@ class MovieLibrary extends Component {
           <h2> My awesome movie library </h2>
           <SearchBar
             searchText={searchText}
-            onSearchTextChange={this.onSearchTextChange}
+            onSearchTextChange={(event) => this.onSearchTextChange(event)}
             bookmarkedOnly={bookmarkedOnly}
             onBookmarkedChange={this.onBookmarkedChange}
             selectedGenre={selectedGenre}
