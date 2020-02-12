@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.generateGenreField = this.generateGenreField.bind(this);
+  }
+
+  generateGenreField() {
+    const { selectedGenre, onSelectedGenreChange } = this.props;
+    return (
+      <label htmlFor="genre">
+        Filtrar por gênero
+        <select value={selectedGenre} onChange={onSelectedGenreChange}>
+          <option value="">Todos</option>
+          <option value="action">Ação</option>
+          <option value="comedy">Comédia</option>
+          <option value="thriller">Suspense</option>
+        </select>
+      </label>
+    );
+  }
+
   render() {
     const {
-      searchText, bookmarkedOnly, selectedGenre,
-      onSearchTextChange, onBookmarkedChange, onSelectedGenreChange,
+      searchText, bookmarkedOnly,
+      onSearchTextChange, onBookmarkedChange,
     } = this.props;
     return (
       <form>
@@ -21,15 +41,7 @@ class SearchBar extends Component {
             onChange={onBookmarkedChange}
           />
         </label>
-        <label htmlFor="genre">
-          Filtrar por gênero
-          <select value={selectedGenre} onChange={onSelectedGenreChange}>
-            <option value="">Todos</option>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-          </select>
-        </label>
+        {this.generateGenreField()}
       </form>
     );
   }

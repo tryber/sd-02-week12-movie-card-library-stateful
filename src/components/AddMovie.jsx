@@ -23,6 +23,10 @@ class AddMovie extends React.Component {
     this.genreChange = this.genreChange.bind(this);
 
     this.addMovie = this.addMovie.bind(this);
+
+    this.ratingAndGenre = this.ratingAndGenre.bind(this);
+
+    this.buttonAddMovie = this.buttonAddMovie.bind(this);
   }
 
   titleChange(event) {
@@ -62,27 +66,10 @@ class AddMovie extends React.Component {
     onClick(movie);
   }
 
-  render() {
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
-    const { onClick } = this.props;
+  ratingAndGenre() {
+    const { rating, genre } = this.state;
     return (
-      <form>
-        <label htmlFor="title">
-          Título
-          <input type="text" value={title} onChange={this.titleChange} />
-        </label>
-        <label htmlFor="subtitle">
-          Subtítulo
-          <input type="text" value={subtitle} onChange={this.subtitleChange} />
-        </label>
-        <label htmlFor="image">
-          Imagem
-          <input type="text" value={imagePath} onChange={this.imageChange} />
-        </label>
-        <label htmlFor="storyline">
-          Sinopse
-          <textarea value={storyline} onChange={this.storyLineChange} />
-        </label>
+      <div>
         <label htmlFor="rating">
           Avaliação
           <input
@@ -101,12 +88,44 @@ class AddMovie extends React.Component {
             <option value="thriller">Suspense</option>
           </select>
         </label>
-        <button
-          onClick={() => this.addMovie(onClick)}
-          type="button"
-        >
-          Adicionar filme
-        </button>
+      </div>
+    );
+  }
+
+  buttonAddMovie() {
+    const { onClick } = this.props;
+    return (
+      <button
+        onClick={() => this.addMovie(onClick)}
+        type="button"
+      >
+        Adicionar filme
+      </button>
+    );
+  }
+
+  render() {
+    const { title, subtitle, imagePath, storyline } = this.state;
+    return (
+      <form>
+        <label htmlFor="title">
+          Título
+          <input type="text" value={title} onChange={this.titleChange} />
+        </label>
+        <label htmlFor="subtitle">
+          Subtítulo
+          <input type="text" value={subtitle} onChange={this.subtitleChange} />
+        </label>
+        <label htmlFor="image">
+          Imagem
+          <input type="text" value={imagePath} onChange={this.imageChange} />
+        </label>
+        <label htmlFor="storyline">
+          Sinopse
+          <textarea value={storyline} onChange={this.storyLineChange} />
+        </label>
+        {this.ratingAndGenre()}
+        {this.buttonAddMovie()}
       </form>
     );
   }
