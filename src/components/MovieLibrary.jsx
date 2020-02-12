@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
-import MovieList from './MovieList'
+import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
@@ -54,7 +54,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2>My awesome Movie Library</h2>
@@ -64,11 +64,12 @@ class MovieLibrary extends Component {
           bookmarkedOnly={bookmarkedOnly}
           onBookmarkedChange={(event) => this.upBookmarked(event)}
           selectedGenre={selectedGenre}
-          onSelectedGenreChange={(event) => this.changeGenre(event)} />
+          onSelectedGenreChange={(event) => this.changeGenre(event)}
+        />
         <MovieList movies={this.filtrafilmes(this.state)} />
         <AddMovie onClick={this.adicionaNovoFilme} />
       </div>
-    )
+    );
   }
 }
 export default MovieLibrary;
