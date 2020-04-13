@@ -9,7 +9,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <MovieLibrary movies={movies} />
+      <div>
+        <MovieLibrary movies={movies} />
+      </div>
     </div>
   );
 }
